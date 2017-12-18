@@ -1,127 +1,37 @@
-body{
-	padding-top: 70px;
-}
-
-.lead{
-	text-align: justify;
-}
-
-a.table_button{
-  font-size: large;
-  color:black;
-}
-
-a.table_button:hover{
-  color:red;
-  text-decoration: underline; 
-}
-
-a.m_button{
-	border-bottom:1px solid #dcdcdc;
-	width:30px;
-}
-
-a.m_button:hover{
-	cursor: pointer;
-}
-
-img.m_button{
-  border: 2px solid transparent;
-}
-
-img.m_button:hover{
-  border: 2px solid black;
-  border-radius: 5px;
-}
-
-.m_buttons {
-  text-align: center;
-  margin: 40px 0 0 0;
-}
-
-
-
-#headlines {
-    list-style: outside none none;
-    padding: 0px;
-}
-
-#headlines h2{
-	vertical-align: middle;
-}
-
-#headlines li{
-	min-height:8em;
-}
-
-time.icon
-{
-  float: left;
-  margin: 10px;
-  font-size: 1em; 
-  display: flex;
-  flex-direction: column;
-  width: 7em;
-  height: 7em;
-  background-color: #fff;
-  border-radius: 0.6em;
-  overflow: hidden;
-  /*border-style: solid;*/
-}
-
-time.icon *
-{
-  font-size: 1em;
-  font-weight: bold;
-  font-style: normal;
-  text-align: center;
-}
-
-time.icon strong
-{
-  padding: 0.4em 0;
-  color: #fff;
-  background-color: #fd9f1b;
-  border-bottom: 1px dashed #f37302;
-  box-shadow: 0 2px 0 #fd9f1b;
-}
-
-time.icon em
-{
-  /*position: absolute;*/
-  /*bottom: 0.3em;*/
-  order:2;
-  color: #fd9f1b;
-}
-
-time.icon span
-{
-  font-size: 2.8em;
-  letter-spacing: -0.05em;
-  /*padding-top: 0.8em;*/
-  color: #2f2f2f;
-  order:1;
-  line-height: 0.9;
-  padding-top: 10px;
-}
-
-a.b_button{
-  text-decoration: none;
-  color: black;
-  text-shadow: green 0 0 2px;
-}
-
-a.b_button:hover{
-  cursor: pointer;
-  text-shadow: red 0 0 2px;
-}
-
-div.b_button{
-  position: absolute;
-  top: 0;
-  font-size: x-large;
-}
-
-li.baner{
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
   position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
 }
