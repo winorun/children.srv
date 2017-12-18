@@ -14,26 +14,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Michelf\MarkdownExtra;
 
 
-class DefaultController extends Controller
+class MarkdownController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-       return $this->render('base.html.twig');
-    }
-
-    /**
-     * @Route("/test", name="test")
-     */
-    public function testAction(Request $request)
+    public function testAction($contentName)
     {
         $repository = $this->getDoctrine()->getRepository(Markdown::class);
-        $product = $repository->findOneByName('sitebar');
+        $product = $repository->findOneByName($contentName);
 
         $title=MarkdownExtra::defaultTransform($product->getContent());
-       return $this->render('base.html.twig',array('title' => $title));
+        return new Response($title);
     }
 }

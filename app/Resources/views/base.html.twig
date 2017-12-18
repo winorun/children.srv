@@ -91,15 +91,15 @@
       <h1 >{% block header %}Здвинская детская библиотека {% endblock %}</h1>
     </header>
   </div>
-  {% block body %}{% endblock %}
+  {% block body %}{{title is defined ? title: 'Редактируем новости'}}{% endblock %}
 </div>
 </div>
         <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>Библиотека работает:</h4>
-            <p><em>Пн - Пт:</em> c 10:00 до 18:00 <br>
-            <em>Воскресенье:</em> c 11:00 до 17:00 <br>
-            <em>Суббота:</em> Выходной</p>
+            {{ render(controller(
+                'AppBundle:Markdown:test',
+                { 'contentName': 'sitebar' }
+            )) }}
             <form class="navbar-form" role="search" action="{# {{ path('Search') }} #}">
               <div class="input-group">
                 <input type="search" class="form-control" name='q' placeholder="Поиск...">
@@ -119,7 +119,15 @@
 </div>
     <div id="footer">
       <div class="container">
-        {% block footer %}<p class="text-muted">Place sticky footer content here.</p>{% endblock %}
+        {# {% block footer %}<p class="text-muted">Place sticky footer content here.</p>{% endblock %} #}
+        {% block footer %}
+          <p class="text-muted">
+            {{ render(controller(
+                'AppBundle:Markdown:test',
+                { 'contentName': 'footer' }
+            )) }}
+            </p>
+        {% endblock %}    
       </div>
     </div>
         {% block javascripts %}
@@ -131,3 +139,5 @@
         {% endblock %}
     </body>
 </html>
+
+
