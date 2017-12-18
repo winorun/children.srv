@@ -34,6 +34,6 @@ class DefaultController extends Controller
         $product = $repository->findOneByName('sitebar');
 
         $title=MarkdownExtra::defaultTransform($product->getContent());
-       return $this->render('base.html.twig',array('title' => $title));
+       return $this->render('test.html.twig',array('title' => $title));
     }
 }

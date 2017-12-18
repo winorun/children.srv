@@ -1,142 +1,109 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="shortcut icon" href="/images/favicon.png">
-        <title>{% block title %}МКУК Здвинская ЦБС Детское отделение{% endblock %}</title>
-        {% block stylesheets %}
-            <!-- Bootstrap core CSS -->
-            <link href="/css/bootstrap.min.css" rel="stylesheet">
-            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-            {# Заменить maxcdn.bootstrapcdn.com на локальный #}
-            <!-- Custom styles for this template -->
-            <link href="/css/sticky-footer.css" rel="stylesheet">
-            <link href="/css/zdvlib.css" rel="stylesheet">
-            <link media='print' href="/css/print.css" rel="stylesheet" />
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>
+      {% block title %}{{title is defined ? title: 'МКУК Здвинская ЦБС Детское отделение'}}{% endblock %}
+    </title>
+    {% block stylesheets %}
+      <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
+      <link rel="stylesheet" href="/css/custom.min.css">
+      <link rel="stylesheet" href="/css/zdvlib.css">
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23019901-1']);
+      _gaq.push(['_setDomainName', "bootswatch.com"]);
+        _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
 
-            <!-- Just for debugging purposes. Don't actually copy this line! -->
-            <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+    </script>
+  </head>
+  <body>
 
-            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-            <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-            <![endif]-->
-        {% endblock %}
-    </head>
-    <body>
+{{include('navbar.html.twig')}}
+
+<main role="main" class="container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+{% block body %}
+    <div class="col-12 col-md-9">
+      <p class="float-right d-md-none">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron">
+        <h1>ChildLib</h1>
+          <p>Это сайт детского отделения МКУК Здвинской централизованной системы</p>
+      </div>
 
 
+          <div class="row">
+            <div class="col-6 col-lg-4">
+              <h2>День специалиста</h2>
+              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-6 col-lg-4">
+              <h2>День специалиста</h2>
+              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
+            </div><!--/span-->
 
-    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
-      <div class="container-fluid">
-{#       <div class="masthead">
-        <h3 class="text-muted">МКУК Здвинская ЦБС Детское отделение</h3> #}
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><div>Здвинская "ЦБС"<br><div style="font-size:x-small">Детское отделение</div> </div></a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+            <div class="col-6 col-lg-4">
+              <h2>День специалиста</h2>
+              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-6 col-lg-4">
+              <h2>День специалиста</h2>
+              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
+            </div><!--/span-->
+          </div><!--/row-->
 
-{% block sidebar %}{% endblock %}
-
-          </ul>
-         <ul class="nav navbar-nav navbar-right">
-{% if is_granted('ROLE_ADMIN') %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Редактировать<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-
-                {# <li><a href="{{ path('pageList') }}">Страницы</a></li> #}
-                {# <li><a href="{{ path('AdminBuner') }}">Банеры</a></li> #}
-                <li class="divider"></li>
-                <li><a href="#">Меню</a></li>
-                <li><a href="#">Подвал</a></li>
-                <li class="divider"></li>
-                {# <li><a href="{{ path('BackUp') }}">Backup sql</a></li> #}
-
-              </ul>
-            </li>
-{% endif %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{ logout_url() }}">Выход</a></li>
-                </ul>
-               </li>
-            {% else %}
-            <li><a href="{{ path('login') }}">Вход</a></li>
-            {%endif%}
-            <li><a class="eyeless" href="/?eyeless=true"><strong> Версия для слабовидящих</strong></a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-
-<div class="row">
-  <div class="col-sm-9 blog-main">
-    {# {{ render(controller('AppBundle:Message:view',
-        message is defined ? {'message':message} : {'message':null} )) }} #}
-<div class="container">
-
-  <div class="page-header">
-    <header>
-      <h1 >{% block header %}Здвинская детская библиотека {% endblock %}</h1>
-    </header>
-  </div>
-  {% block body %}{{title is defined ? title: 'Редактируем новости'}}{% endblock %}
-</div>
-</div>
-        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            {{ render(controller(
-                'AppBundle:Markdown:test',
-                { 'contentName': 'sitebar' }
-            )) }}
-            <form class="navbar-form" role="search" action="{# {{ path('Search') }} #}">
-              <div class="input-group">
-                <input type="search" class="form-control" name='q' placeholder="Поиск...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit" >
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-          </form>
-          </div>
-        <div class="sidebar-module">
-          {# {{ render(controller('AppBundle:Baner:showSidebar')) }} #}
-        </div>
-
-        </div><!-- /.blog-sidebar -->
-</div>
-    <div id="footer">
-      <div class="container">
-        {# {% block footer %}<p class="text-muted">Place sticky footer content here.</p>{% endblock %} #}
-        {% block footer %}
-          <p class="text-muted">
-            {{ render(controller(
-                'AppBundle:Markdown:test',
-                { 'contentName': 'footer' }
-            )) }}
-            </p>
-        {% endblock %}    
+    </div>
+{% endblock %}
+    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+      {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <div class="sidebar-module">
+        {# {{ render(controller('AppBundle:Baner:showSidebar')) }} #}
       </div>
     </div>
-        {% block javascripts %}
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script src="/js/bootstrap.min.js"></script>
-        {% endblock %}
+
+
+</div><!-- /.blog-sidebar -->
+
+</main><!--/.container-->
+
+{# <footer>
+      {% block footer %}
+          {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'footer' })) }}
+      {% endblock %} 
+</footer> #}
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+      {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'footer' })) }}
+    </span>
+  </div>
+</footer>
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/custom.js"></script>
+{% endblock %}
+
     </body>
 </html>
 
