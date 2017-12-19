@@ -1,0 +1,8 @@
+<div class="row">
+{% for new in news %}
+  <div class="col-6 col-lg-4">
+    <h2>{{ new.title }}</h2>
+    <p>{{ new.summary }}</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
+  </div><!--/span-->
+{% endfor %}
+</div><!--/row-->
