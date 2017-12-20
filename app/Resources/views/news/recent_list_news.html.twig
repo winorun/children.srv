@@ -1,13 +1,28 @@
-<div class="row">
+<ul id="headlines">
 {% for new in news %}
-  <div class="col-6 col-lg-4">
+<li>
+  	<time datetime="{{new.publicationDate|date('Y-m-d')}}" class="icon">
+		{{new.publicationDate|created_ago|raw}}
+	</time>
+	<div>
     <h2>{{ new.title }}
     {% if is_granted('ROLE_ADMIN') %}
     <a class= "admin_link" href="{{ path('EditNews',{'page':new.id})}}">&#x270E</a>
     <a class= "admin_link" href="{{ path('DellNews',{'page':new.id})}}" onclick="return confirm('Удалить страницу')" >&#x2718</a>
     {% endif %}
     </h2>
-    <p>{{ new.summary }}</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
-  </div><!--/span-->
+    	{% if new.imageHref %}
+    	<img src={{new.imageHref}} style="width: 80%;"/>
+    	{% endif %}	
+    	{% if new.summary %}
+    		<p class="summary lead">{{new.summary}}
+    			{% if new.content %}
+				<a href="{{ path('ShowNews',{'page':new.id})}}"> Читать далее </a>
+				{% endif %}
+			</p>
+    	{% endif %}	
+	</div>
+</li>
 {% endfor %}
-</div><!--/row-->
+</ul>
+
