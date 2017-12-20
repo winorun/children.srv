@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{news.title}}{% endblock %}
+
+{% block container %}
+ <div class="container">
+ <div class="page-header"><h1>{{news.title}}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('EditNews',{'page':news.id})}}"><img src="/images/edd.png"></a>
+<a href="{{ path('DellNews',{'page':news.id})}}" onclick="return confirm('Удалить страницу')" ><img src="/images/dell.png"></a>
+{% endif %}
+ </h1></div>
+ <article>
+<div style=" font-style: italic;" class="lead" >{{news.summary}}</div>
+<div class="lead" >{{news.content|raw}}</div>
+</article>
+</div>
+{% endblock %}

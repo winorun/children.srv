@@ -39,8 +39,14 @@ class NewsController extends Controller
      */
     public function newsAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('AppBundle:News')->findAll();
+        $repository = $this->getDoctrine()->getRepository(News::class);
+        $query = $repository->createQueryBuilder('p')
+                // ->where('p.price > :price')
+                // ->setParameter('price', '19.99')
+                ->orderBy('p.publicationDate', 'DESC')
+                ->getQuery();
+
+        $news = $query->getResult();
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
 
