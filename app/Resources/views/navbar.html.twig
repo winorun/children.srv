@@ -13,7 +13,7 @@
           <a class="nav-link" href="#">Родителям</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Новости</a>
+          <a class="nav-link" href="{{ path('News') }}">Новости</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Наши фото</a>
@@ -28,12 +28,12 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Редактировать</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Страницы</a>
-              <a class="dropdown-item" href="#">Банеры</a>
-              <a class="dropdown-item" href="#">Меню</a>
-              <a class="dropdown-item" href="#">Подвал</a>
+              <a class="dropdown-item disabled" href="#">Страницы</a>
+              <a class="dropdown-item disabled" href="#">Банеры</a>
+              <a class="dropdown-item disabled" href="#">Меню</a>
+              <a class="dropdown-item disabled" href="#">Подвал</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Backup sql</a>
+              <a class="dropdown-item disabled" href="#">Backup sql</a>
             </div>
           </li>
 {% endif %}

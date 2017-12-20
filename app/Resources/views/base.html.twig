@@ -35,35 +35,11 @@
   <div class="row row-offcanvas row-offcanvas-right">
 {% block body %}
     <div class="col-12 col-md-9">
-      <p class="float-right d-md-none">
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
-      </p>
       <div class="jumbotron">
         <h1>ChildLib</h1>
           <p>Это сайт детского отделения МКУК Здвинской централизованной системы</p>
       </div>
-
-
-          <div class="row">
-            <div class="col-6 col-lg-4">
-              <h2>День специалиста</h2>
-              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-lg-4">
-              <h2>День специалиста</h2>
-              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
-            </div><!--/span-->
-
-            <div class="col-6 col-lg-4">
-              <h2>День специалиста</h2>
-              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-lg-4">
-              <h2>День специалиста</h2>
-              <p>День специалиста «Компетентность и профессионализм современного библиотекаря» состоялся 18сентября на базе Здвинской центральной библиотеки</p><a class="btn btn-secondary" href="#" role="button">читать далее &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-
+    {{ render(controller('AppBundle:News:recentNews',{ 'max': 6 })) }}
     </div>
 {% endblock %}
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">

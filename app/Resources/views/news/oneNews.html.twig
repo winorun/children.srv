@@ -1,0 +1,14 @@
+<li>
+	<time datetime="{{ne.publicationDate|date('Y-m-d')}}" class="icon">
+		{{ne.publicationDate|created_ago|raw}}
+	</time>
+	<div>
+		<h2>{{ne.title}}
+		{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('EditNews',{'page':ne.id})}}"><img src="/images/edd.png"></a>
+		<a href="{{ path('DellNews',{'page':ne.id})}}" onclick="return confirm('Удалить страницу')" ><img src="/images/dell.png"></a>
+		{% endif %}
+		</h2>
+		<p class="summary lead">{{ne.summary}}<a href="{{ path('ShowNews',{'page':ne.id})}}"> Читать далее </a></p>
+	</div>
+</li>
