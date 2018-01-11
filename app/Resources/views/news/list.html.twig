@@ -5,14 +5,11 @@
 {% block body %}
 <div class="col-12 col-md-9">
   <h1 >Наши новости
-  {% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('AddNews')}}"><img src="/images/add.png"></a>
-{% endif %}
-  </h1>
-  <ul id="headlines">
-  {% for ne in news %}
-{{ include('news/oneNews.html.twig', { 'ne': ne }) }}
-  {% endfor %}
-  </ul>
+{% endif %}</h1>
+
+{{ include('news/recent_list_news.html.twig', { 'news': news }) }}
+
 </div>
 {%endblock%}

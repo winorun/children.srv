@@ -16,12 +16,19 @@ class NewsController extends Controller
     public function recentNewsAction($max = 6){
 
         $repository = $this->getDoctrine()->getRepository(News::class);
-        $query = $repository->createQueryBuilder('p')
-                // ->where('p.price > :price')
-                // ->setParameter('price', '19.99')
+        if($max != 0){
+            $query = $repository->createQueryBuilder('p')
                 ->orderBy('p.publicationDate', 'DESC')
                 ->setMaxResults( $max )
                 ->getQuery();
+        }else{
+            $query = $repository->createQueryBuilder('p')
+                // ->where('p.price > :price')
+                // ->setParameter('price', '19.99')
+                ->orderBy('p.publicationDate', 'DESC')
+                ->getQuery();
+        }
+
 
         $news = $query->getResult();
         // $news = $query->setMaxResults(1)->getOneOrNullResult();
@@ -140,6 +147,7 @@ class NewsController extends Controller
         if ( isset( $data['title'] ) ) $entity->setTitle($data['title']);
         if ( isset( $data['content'] ) ) $entity->setContent($data['content']);
         if ( isset( $data['summary'] ) ) $entity->setSummary($data['summary'] );
+        if ( isset( $data['imageHref'] ) ) $entity->setImageHref($data['imageHref'] );
         if ( isset( $data['publicationDate'] ) ) $entity->setPublicationDate(date_create($data['publicationDate']));
     }
 }
