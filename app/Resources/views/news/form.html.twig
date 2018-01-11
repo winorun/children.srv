@@ -12,8 +12,12 @@
         <input type="text" class="form-control" name="title" id="title" placeholder="Имя страницы" required autofocus maxlength="255" value="{{news is defined ? news.title: ''}}" />
       </div>
       <div class="form-group">
+        <label for="imageHref" class="col-form-label">Заголовок:</label>
+        <input type="text" class="form-control" name="imageHref" id="imageHref" placeholder="Сылка на изображения" value="{{news is defined ? news.imageHref: ''}}" />
+      </div>
+      <div class="form-group">
         <label for="summary" class="col-form-label">Анотация:</label>
-        <textarea class="form-control" rows="5" name="summary" id="summary" placeholder="Анотация" required maxlength="1000" >{{news is defined ? news.summary: ''}}</textarea>
+        <textarea class="form-control" rows="5" name="summary" id="summary" placeholder="Анотация"  maxlength="1000" >{{news is defined ? news.summary: ''}}</textarea>
       </div>
       <p>Для набора «французских кавычек — ёлочек» нажимаем Alt и набираем на цифровой панели справа: 0171, отпускаем Alt — получаем "«".
       Нажимаем Alt, набираем 0187, отпускаем Alt — получаем "»".</p>
@@ -22,7 +26,7 @@
       <div class="form-group">
         <script src="/ckeditor/ckeditor.js"></script>
         <label for="content" class="col-form-label">
-        <textarea name="content" class="form-control" rows="5" id="content" required maxlength="10000000">{{news is defined ? news.content|raw():''}}</textarea></label>
+        <textarea name="content" class="form-control" rows="5" id="content"  maxlength="10000000">{{news is defined ? news.content|raw():''}}</textarea></label>
         <script>CKEDITOR.replace( 'content' );</script>
       </div>
       <div class="form-group">
@@ -33,7 +37,7 @@
         <button type="submit" name="saveChanges" class="btn btn-default" >Сохранить</button>
         <button type="submit" name="cancel" class="btn btn-default" >Отмена</button>
         {% if news is defined %}
-        <a href="{{ path('DellNews',{'page':news.id})}}" class="btn btn-default" onclick="return confirm('Удалить страницу?')">Удалить страницу</a>
+        <button href="{{ path('DellNews',{'page':news.id})}}" class="btn btn-default" onclick="return confirm('Удалить страницу?')">Удалить</button>
         {% endif %}
       </div>
     </form>
