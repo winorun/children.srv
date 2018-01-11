@@ -42,6 +42,19 @@ class NewsController extends Controller
     }
 
     /**
+     * @Route("/news/{page}", name="ShowNews", requirements={"page": "\d+"})
+     */
+    public function showAction($page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('AppBundle:News')->find($page);
+
+        if (!$news) throw $this->createNotFoundException('Новость не найденна');
+
+        return $this->render('news/show.html.twig',array('news'=>$news));
+    }
+
+    /**
      * @Route("/news", name="News")
      */
     public function newsAction(Request $request)
@@ -58,19 +71,6 @@ class NewsController extends Controller
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
 
         return $this->render('news/list.html.twig',array('news'=>$news));
-    }
-
-    /**
-     * @Route("/news/{page}", name="ShowNews", requirements={"page": "\d+"})
-     */
-    public function showAction($page)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('AppBundle:News')->find($page);
-
-        if (!$news) throw $this->createNotFoundException('Новость не найденна');
-
-        return $this->render('news/show.html.twig',array('news'=>$news));
     }
 
     /**
@@ -148,6 +148,7 @@ class NewsController extends Controller
         if ( isset( $data['content'] ) ) $entity->setContent($data['content']);
         if ( isset( $data['summary'] ) ) $entity->setSummary($data['summary'] );
         if ( isset( $data['imageHref'] ) ) $entity->setImageHref($data['imageHref'] );
-        if ( isset( $data['publicationDate'] ) ) $entity->setPublicationDate(date_create($data['publicationDate']));
+        if ( isset( $data['publicationDate'] ) ) 
+            $entity->setPublicationDate(date_create($data['publicationDate']));
     }
 }
