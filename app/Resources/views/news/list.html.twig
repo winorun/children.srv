@@ -3,7 +3,7 @@
 {% block title %}Наши новости{% endblock %}
 
 {% block body %}
-<div class="col-12 col-md-9">
+<div class="col-md-8">
   <h1 >Наши новости
 {% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('AddNews')}}"><img src="/images/add.png"></a>
