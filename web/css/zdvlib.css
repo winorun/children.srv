@@ -125,9 +125,9 @@ time.icon strong
 {
   padding: 0.4em 0;
   color: #fff;
-  background-color: #fd9f1b;
+  background-color: #E95420;
   border-bottom: 1px dashed #f37302;
-  box-shadow: 0 2px 0 #fd9f1b;
+  box-shadow: 0 2px 0 #E95420;
 }
 
 time.icon em
@@ -135,7 +135,7 @@ time.icon em
   /*position: absolute;*/
   /*bottom: 0.3em;*/
   order:2;
-  color: #fd9f1b;
+  color: #E95420;
 }
 
 time.icon span
@@ -168,4 +168,17 @@ div.b_button{
 
 li.baner{
   position: relative;
+}
+
+
+/*============================
+ 
+  ============================*/
+
+section h4{
+  color: #DF382C !important;
+}
+
+#markdown p{
+  color: #868e96 !important;
 }

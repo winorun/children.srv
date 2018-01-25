@@ -7,7 +7,8 @@
       {% block title %}{{title is defined ? title: 'МКУК Здвинская ЦБС Детское отделение'}}{% endblock %}
     </title>
     {% block stylesheets %}
-      <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
+      {# <link rel="stylesheet" href="/css/bootstrap.css" media="screen"> #}
+      <link rel="stylesheet" href="/css/united/bootstrap.min.css" media="screen">
       <link rel="stylesheet" href="/css/custom.min.css">
       <link rel="stylesheet" href="/css/zdvlib.css">
     {% endblock %}
@@ -30,11 +31,11 @@
 
 {{include('navbar.html.twig')}}
 
-<main role="main" class="container">
+<main role="main" class="container-fluid">
 
-  <div class="row row-offcanvas row-offcanvas-right">
+  <div class="row">
 {% block body %}
-    <div class="col-12 col-md-9">
+    <div class="col-md-8">
       <div class="jumbotron">
         <h1>ChildLib</h1>
           <p>Это сайт детского отделения МКУК Здвинской централизованной системы</p>
@@ -42,19 +43,32 @@
     {{ render(controller('AppBundle:News:recentNews',{ 'max': 6 })) }}
     </div>
 {% endblock %}
-    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+  <aside id="sidebar" class="col-md-4" style="border-left: 1px solid #f8f9fa;">
+    <section class="my-4 border rounded p-3" id='markdown'>
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <div class="sidebar-module">
-        {# {{ render(controller('AppBundle:Baner:showSidebar')) }} #}
+    </section>
+    <section class="my-4 border rounded p-3">
+    <h3 class="h4 text-danger" style="font-weight: 300;">Найти на сайте</h3>
+    <p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>
+    <form action="search" method="get" role="search">   
+      <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Что найти?" value="">        
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-danger">Поиск</button>
+        </div>
       </div>
-    </div>
+    </form>  
+    </section>
+    <section class="my-4 border rounded p-3">
+    <h3 class="h4 text-danger" style="font-weight: 300;">Найди нас </h3>
+    <p class="text-muted">Наши ресурсы в сети интернет</p>
+    <a href="https://ok.ru/profile/539066633718"><img src="/images/icon_ok.png" width="64px" /></a>
+    <a href="#"><img src="/images/icon_youtube.png" width="64px" /></a>
+    </section>
+  </aside>
 
 
-</div><!-- /.blog-sidebar -->
+</div>
 
 </main><!--/.container-->
 
