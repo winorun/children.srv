@@ -45,6 +45,9 @@ a.admin_link:hover{
     color: #0bd6a7;
 }
 
+.bigfont{
+  font-size: 2rem;
+}
 
 .lead{
   text-align: justify;

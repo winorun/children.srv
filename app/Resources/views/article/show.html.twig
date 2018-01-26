@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{article.name}}{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+ <div class="page-header"><h1>{{article.name}}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('editArticle',{'id':article.id})}}" class= "admin_link"> &#x270E </a>
+<a href="{{ path('dellArticle',{'id':article.id})}}" class= "admin_link" 
+	onclick="return confirm('Удалить страницу')" >&#x2718</a>
+{% endif %}
+ </h1></div>
+ <article>
+<div class="lead" >{{article.content|raw}}</div>
+</article>
+</div>
+{% endblock %}
+
+{% block description %} {{article.description}} {% endblock %}

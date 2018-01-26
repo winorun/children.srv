@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+{{ parent() }}
+<meta name="robots" content="none"/>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/simplemde.min.css" />
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+  <script src="/js/simplemde.min.js"></script>
+	<script>
+	 	new SimpleMDE({ element: document.getElementById("article_content") });
+	</script>
+{% endblock %}
+
+{% block content %}
+	<h1>{{article is not defined ? 'Добавить': 'Редактируем'}} страницу</h1>
+	{{ form_start(form) }}
+		{{form_row(form.name)}}
+		{{form_row(form.description)}}
+		{{form_row(form.content)}}
+<div>
+{{ form_widget(form.save) }}
+<a class="btn-secondary btn" href="{{path('articleList')}}">Отмена</a>
+{% if article is defined %}
+<a class="btn-secondary btn" onclick="return confirm('Удалить страницу?')"
+   href="{{path('articleList',{'id':article.id})}}">Удалить</a>
+{% endif %}
+</div>
+		{{ form_widget(form) }}
+		
+	{{ form_end(form) }}
+      <p class="help-block">
+        <h3>Памятка по составлению описаний</h3>
+        <ol>
+          <li>Описания не должны быть короткими, в несколько слов.</li>
+          <li>Должны описывать конкретную страницу сайта, а не сайт в целом.</li>
+          <li>Описания должны быть написаны для людей, нормальным человеческим языком — развернуто, правильно выстроенными предложениями, без злоупотреблений ключевыми словами, фразами, заглавными буквами, рекламными лозунгами и пр.</li>
+          <li>Описания должны быть емкими и при этом содержательными. Старайтесь выразить основную суть документа в нескольких предложениях.</li>
+          <li>Содержимое должно быть актуальным, отражать текущее состояние страницы.</li>
+          <li>Описания должны соответствовать языку документа.</li>
+        </ol>
+      <p>Для набора «французских кавычек — ёлочек» нажимаем Alt и набираем на цифровой панели справа: 0171, отпускаем Alt — получаем "«".
+      Нажимаем Alt, набираем 0187, отпускаем Alt — получаем "»".</p>
+      <p>В Linux для набора «французских кавычек — ёлочек» нажимаем Win+Shift + >>.
+      отпускаем Win — получаем "»".</p>
+      </p>
+
+{% endblock %}
