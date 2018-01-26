@@ -26,3 +26,9 @@
   </div>
   {% endif %}
 {% endblock %}
+
+{% block meta %}
+{{ parent() }}
+  <meta name="robots" content="none"/>
+{% endblock %}
+
