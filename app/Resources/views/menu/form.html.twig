@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+<article>
+<ul>
+{% for key,value in yaml %}
+	{% if value is iterable %}
+	<li>{{ key }}
+		<div>
+			{% for sub_key,sub_value in value %}
+				{% if sub_value is not iterable %}
+				<a href={{sub_value}}>{{ sub_key }}</a>
+				{%endif%}
+			{%endfor%}
+		</div>
+	</li>
+	{% else %}
+	<li><a href={{value}}>{{ key }}</a></li>
+	{%endif%}
+{% endfor %}
+</ul>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}		
+{{ form_end(form) }}
+</article>
+{% endblock %}
+
+{% block meta %}
+{{ parent() }}
+<meta name="robots" content="none"/>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/simplemde.min.css" />
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+  <script src="/js/simplemde.min.js"></script>
+	<script>
+	 	new SimpleMDE({ element: document.getElementById("form_content") });
+	</script>
+{% endblock %}

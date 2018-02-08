@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="markdown")
+ * @ORM\Table(name="text_config")
  */
-class Markdown
+class TextConfig
 {
 	 /**
      * @ORM\Column(type="integer")
@@ -20,11 +20,14 @@ class Markdown
      * @ORM\Column(type="string", length=100)
      */
 	protected $name;
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $type;
 	/**
      * @ORM\Column(type="text")
      */
     protected $content;
-
     /**
      * Get id
      *
@@ -57,6 +60,16 @@ class Markdown
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
