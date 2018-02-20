@@ -6,10 +6,12 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto" >
 
-
-
-{{ render(controller('AppBundle:Menu:showUserMenu')) }}
-
+{% if yaml_menu is defined %}
+  {{ render(controller('AppBundle:Menu:showUserMenu',{ 'yaml': yaml_menu })) }}
+{# title is defined ? title: 'Редактируем новости' #}
+{% else %}
+  {{ render(controller('AppBundle:Menu:showUserMenu')) }}
+{% endif %}
 
 
 {#         <li class="nav-item active">

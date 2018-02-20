@@ -14,13 +14,14 @@ class MenuController extends Controller
     /**
      * @todo добавить валидацию и проверки
      */
-    public function showUserMenuAction($contentName='menu')
+    public function showUserMenuAction($yaml=NULL)
     {
-        $repository = $this->getDoctrine()->getRepository(TextConfig::class);
-        $text = $repository->findOneByName('menu');
-
-		$yaml = Yaml::parse($text->getContent());
-
+    	if($yaml==NULL){
+    		$repository = $this->getDoctrine()->getRepository(TextConfig::class);
+	        $menu = $repository->findOneByName('menu');
+			if (!$menu) throw $this->createNotFoundException('Нас взламывают');//:)
+			$yaml = Yaml::parse($menu->getContent());
+    	}
        return $this->render('user_menu.html.twig',array('yaml'=>$yaml));
     }
 }

@@ -11,6 +11,7 @@ use AppBundle\Entity\TextConfig;
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * @Route("/admin")
@@ -27,6 +28,7 @@ class ConfigController extends Controller
 
         if (!$text) throw $this->createNotFoundException('Нас взламывают');//:)
 
+
 		$yaml = Yaml::parse($text->getContent());
 
         $form = $this->createFormBuilder($text)
@@ -37,10 +39,16 @@ class ConfigController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
                 $text = $form->getData();
-                $em = $this->getDoctrine()->getManager();
-                $em->flush();
-        }
 
-       return $this->render('menu/form.html.twig',array('form' => $form->createView(),'yaml'=>$yaml));
+                try {
+                    $yaml_test = Yaml::parse($text->getContent());
+                    $em = $this->getDoctrine()->getManager();
+                    $em->flush();
+                    $this->addFlash('success', 'Изменение сохранены' );
+                } catch (ParseException $e) {
+                    $this->addFlash('danger', $e->getMessage() );
+                }
+        }
+       return $this->render('menu/form.html.twig',array('form' => $form->createView(),'yaml_menu'=>$yaml));
     }
 }
