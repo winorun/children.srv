@@ -51,4 +51,31 @@ class ConfigController extends Controller
         }
        return $this->render('menu/form.html.twig',array('form' => $form->createView(),'yaml_menu'=>$yaml));
     }
+
+    /**
+     * @Route("/footer", name="formFooter", defaults={"edit_param" = "footer"}))
+     * @Route("/sitebar", name="formSitebar", defaults={"edit_param" = "sitebar"}))
+     */
+    public function footerAction(Request $request, $edit_param)
+    {
+        $repository = $this->getDoctrine()->getRepository(TextConfig::class);
+        $text = $repository->findOneByName($edit_param);
+
+        if (!$text) throw $this->createNotFoundException('Нас взламывают');//:)
+
+        $form = $this->createFormBuilder($text)
+            ->add('content', TextareaType::class, array('label' => 'Файл','required' => false))
+            ->add('save', SubmitType::class, array('label' => 'Сохранить'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+                $this->addFlash('success', 'Изменение сохранены' );
+        }
+       return $this->render('menu/form.html.twig',array('form' => $form->createView()));
+    }
+
+
 }
