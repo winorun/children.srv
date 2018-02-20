@@ -13,27 +13,6 @@
   {{ render(controller('AppBundle:Menu:showUserMenu')) }}
 {% endif %}
 
-
-{#         <li class="nav-item active">
-          <a class="nav-link" href="#">Детям <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Родителям</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('News') }}">Новости</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Наши фото</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">О нас</a>
-        </li> #}
-
-
-
-
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
 {% if is_granted('ROLE_ADMIN') %}   
@@ -43,7 +22,8 @@
               <a class="dropdown-item" href="{{ path('articleList') }}">Страниц</a>
               <a class="dropdown-item disabled" href="#">Банеров</a>
               <a class="dropdown-item" href="{{ path('formMenu') }}">Меню</a>
-              <a class="dropdown-item disabled" href="#">Подвала</a>
+              <a class="dropdown-item" href="{{ path('formFooter') }}">Подвала</a>
+              <a class="dropdown-item" href="{{ path('formSitebar') }}">Расписание</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item disabled" href="#">Backup sql</a>
             </div>
