@@ -4,3 +4,7 @@ app:
     
 logout:
     path: /logout
+
+sitemap:
+    path:     /sitemap.xml
+    defaults: { _controller: AppBundle:Config:sitemap, _format: xml }
