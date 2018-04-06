@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Admin;
+namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,6 +12,11 @@ use AppBundle\Entity\TextConfig;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Yaml\Exception\ParseException;
+
+use AppBundle\Entity\Article;
+use AppBundle\Entity\News;
+
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/admin")
@@ -77,5 +82,18 @@ class ConfigController extends Controller
        return $this->render('menu/form.html.twig',array('form' => $form->createView()));
     }
 
+    /**
+     * @Route("/sitemap.xml", defaults={"_format"="xml"}, name="Sitemap")
+     */
+    public function sitemapAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('AppBundle:Article')->findAll();
+        $news = $em->getRepository('AppBundle:News')->findAll();
 
+        $response = new Response();
+        $response->headers->set('Content-Type', 'xml');
+
+        return $this->render('admin/sitemap.xml.twig',array('article'=>$article,'news'=>$news));
+    }
 }

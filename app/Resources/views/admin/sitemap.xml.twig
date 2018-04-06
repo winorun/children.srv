@@ -1,0 +1,8 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for url in article %}
+ <url><loc>{{ url('showArticle',{'id':url.id})}}</loc></url>
+{% endfor %}
+{% for url in news %}
+ <url><loc>{{ url('ShowNews',{'page':url.id})}}</loc></url>
+{% endfor %}
+</urlset>
