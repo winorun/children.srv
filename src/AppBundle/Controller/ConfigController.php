@@ -96,4 +96,13 @@ class ConfigController extends Controller
 
         return $this->render('admin/sitemap.xml.twig',array('article'=>$article,'news'=>$news));
     }
+
+ 
+    public function searchAction(Request $request)
+    {
+        $seachString="http://google.ru/search?q=site:".$request->headers->get('host').
+        " ".$request->get('query');
+        return $this->redirect($seachString);
+
+    }
 }
