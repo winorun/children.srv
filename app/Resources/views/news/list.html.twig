@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Наши новости{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+  <h1 >Наши новости
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('AddNews')}}" class= "admin_link">&#10010</a>
+{% endif %}</h1>
+
+{{ include('news/recent_list_news.html.twig', { 'news': news }) }}
+
+</div>
+{%endblock%}

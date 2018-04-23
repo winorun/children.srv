@@ -1,9 +1,56 @@
-body{
-	padding-top: 70px;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+
+a.admin_link{
+    text-decoration: none;
+}
+
+a.admin_link:hover{
+    color: #0bd6a7;
+}
+
+.bigfont{
+  font-size: 2rem;
 }
 
 .lead{
-	text-align: justify;
+  text-align: justify;
 }
 
 a.table_button{
@@ -17,12 +64,12 @@ a.table_button:hover{
 }
 
 a.m_button{
-	border-bottom:1px solid #dcdcdc;
-	width:30px;
+  border-bottom:1px solid #dcdcdc;
+  width:30px;
 }
 
 a.m_button:hover{
-	cursor: pointer;
+  cursor: pointer;
 }
 
 img.m_button{
@@ -47,11 +94,11 @@ img.m_button:hover{
 }
 
 #headlines h2{
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 #headlines li{
-	min-height:8em;
+  min-height:8em;
 }
 
 time.icon
@@ -81,9 +128,9 @@ time.icon strong
 {
   padding: 0.4em 0;
   color: #fff;
-  background-color: #fd9f1b;
+  background-color: #E95420;
   border-bottom: 1px dashed #f37302;
-  box-shadow: 0 2px 0 #fd9f1b;
+  box-shadow: 0 2px 0 #E95420;
 }
 
 time.icon em
@@ -91,7 +138,7 @@ time.icon em
   /*position: absolute;*/
   /*bottom: 0.3em;*/
   order:2;
-  color: #fd9f1b;
+  color: #E95420;
 }
 
 time.icon span
@@ -124,4 +171,17 @@ div.b_button{
 
 li.baner{
   position: relative;
+}
+
+
+/*============================
+ 
+  ============================*/
+
+section h4{
+  color: #DF382C !important;
+}
+
+#markdown p{
+  color: #868e96 !important;
 }

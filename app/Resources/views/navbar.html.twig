@@ -1,0 +1,44 @@
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+      <a class="navbar-brand" href="/">ChildLib</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" style="">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto" >
+
+{% if yaml_menu is defined %}
+  {{ render(controller('AppBundle:Menu:showUserMenu',{ 'yaml': yaml_menu })) }}
+{# title is defined ? title: 'Редактируем новости' #}
+{% else %}
+  {{ render(controller('AppBundle:Menu:showUserMenu')) }}
+{% endif %}
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+{% if is_granted('ROLE_ADMIN') %}   
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Администратирование</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('articleList') }}">Страниц</a>
+              <a class="dropdown-item disabled" href="#">Банеров</a>
+              <a class="dropdown-item" href="{{ path('formMenu') }}">Меню</a>
+              <a class="dropdown-item" href="{{ path('formFooter') }}">Подвала</a>
+              <a class="dropdown-item" href="{{ path('formSitebar') }}">Расписание</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item disabled" href="#">Backup sql</a>
+            </div>
+          </li>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ logout_url() }}">Выход</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{{ path('login') }}">Вход</a></li>
+          {%endif%}
+          </ul>
+        </div><!-- /.nav-collapse -->
+    </nav><!-- /.navbar --> 

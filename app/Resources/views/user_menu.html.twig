@@ -1,0 +1,16 @@
+{% for key,value in yaml %}
+	{% if value is iterable %}
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ key }}</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			{% for sub_key,sub_value in value %}
+				{% if sub_value is not iterable %}
+				<a class="dropdown-item" href={{sub_value}}>{{ sub_key }}</a>
+				{%endif%}
+			{%endfor%}
+		</div>
+	</li>
+	{% else %}
+	<li class="nav-item" ><a class="nav-link" href={{value}}>{{ key }}</a></li>
+	{%endif%}
+{% endfor %}

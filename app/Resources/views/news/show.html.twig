@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{news.title}}{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+ <div class="page-header"><h1>{{news.title}}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('EditNews',{'page':news.id})}}" class= "admin_link"> &#x270E </a>
+<a href="{{ path('DellNews',{'page':news.id})}}" class= "admin_link" 
+	onclick="return confirm('Удалить страницу')" >&#x2718</a>
+{% endif %}
+ </h1></div>
+ <article>
+<div style=" font-style: italic;" class="lead" >{{news.summary}}</div>
+<div class="lead" >{{news.content|raw}}</div>
+Опубликовано:  {{news.publicationDate|strftime()}}
+</article>
+</div>
+{% endblock %}
+
+{% block description %}
+{{news.summary}}
+{% endblock %}
