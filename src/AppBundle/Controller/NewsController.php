@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Michelf\MarkdownExtra;
 
 use AppBundle\Entity\News;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,7 +51,7 @@ class NewsController extends Controller
         $news = $em->getRepository('AppBundle:News')->find($page);
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
-
+        $news->setContent(MarkdownExtra::defaultTransform($news->getContent()));
         return $this->render('news/show.html.twig',array('news'=>$news));
     }
 

@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="col-12 col-md-9">
+{% block content %}
 <h1>{{title is defined ? title: 'Редактируем новости'}}</h1>
     <form action="{{path is defined ? path: ''}}" method="post">
     {% if news.id is defined%}
@@ -23,12 +22,15 @@
       Нажимаем Alt, набираем 0187, отпускаем Alt — получаем "»".</p>
       <p>В Linux для набора «французских кавычек — ёлочек» нажимаем Win+Shift + >>.
       отпускаем Win — получаем "»".</p>
-      <div class="form-group">
-        <script src="/ckeditor/ckeditor.js"></script>
-        <label for="content" class="col-form-label">
-        <textarea name="content" class="form-control" rows="5" id="content" >{{news is defined ? news.content|raw():''}}</textarea></label>
-        <script>CKEDITOR.replace( 'content' );</script>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default" onclick="enableCKEDITOR()">CKEDITOR</button>
+        <button type="button" class="btn btn-default" onclick="enableSimpleMDE()">SimpleMDE</button>
       </div>
+      <div class="form-group">
+        <label for="content" class="col-form-label"></label>
+        <textarea name="content" class="form-control" rows="5" id="content" >{{news is defined ? news.content|raw():''}}</textarea>
+      </div>   
+
       <div class="form-group">
         <label for="publicationDate" class="col-form-label">Дата публикации:</label>
         <input class="form-control" type="date" name="publicationDate" id="publicationDate" placeholder="YYYY-MM-DD" required maxlength="10" value="{{news is defined ? news.publicationDate|date('Y-m-d'):''}}" />
@@ -41,11 +43,11 @@
         {% endif %}
       </div>
     </form>
-</div>
 {%endblock%}
 
 {% block stylesheets %}
 {{ parent() }}
+ <link rel="stylesheet" type="text/css" href="/css/simplemde.min.css" />
 {#
   <link rel="stylesheet" type="text/css" href="/css/admin.css" />
   <link rel="stylesheet" type="text/css" href="/css/mess.css" />
@@ -62,4 +64,35 @@
   {% if news is defined %}
     {{ news.summary }}
   {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+  <script src="/js/simplemde.min.js"></script>
+  <script src="/ckeditor/ckeditor.js"></script>
+  <script>
+  // new SimpleMDE({ element: document.getElementById('content') });
+  var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+  <!--
+  function enableCKEDITOR() {
+    if(simplemde != null){
+      simplemde.toTextArea();
+      simplemde = null;      
+    }
+    var hEd = CKEDITOR.instances['content'];
+    if (!hEd) {
+      CKEDITOR.replace( 'content' );   
+    }
+  }
+  function enableSimpleMDE(){
+    var hEd = CKEDITOR.instances['content'];
+    if (hEd) {
+      CKEDITOR.instances['content'].destroy();  
+    }
+    if(simplemde == null){
+      simplemde = new SimpleMDE({ element: document.getElementById("content") });
+    }
+  }
+    -->
+  </script>
 {% endblock %}
