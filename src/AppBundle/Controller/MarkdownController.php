@@ -21,7 +21,7 @@ class MarkdownController extends Controller
         $repository = $this->getDoctrine()->getRepository(TextConfig::class);
         $product = $repository->findOneByName($contentName);
 
-        $title=MarkdownExtra::defaultTransform($product->getContent());
+        $title=($product)?MarkdownExtra::defaultTransform($product->getContent()):"";
         return new Response($title);
     }
 }

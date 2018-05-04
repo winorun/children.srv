@@ -185,3 +185,8 @@ section h4{
 #markdown p{
   color: #868e96 !important;
 }
+
+.link_icon {
+  width: 64px;
+  /*width="64px"*/
+}

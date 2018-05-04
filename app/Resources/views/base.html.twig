@@ -64,11 +64,10 @@
       </div>
     </form>  
     </section>
-    <section class="my-4 border rounded p-3">
-    <h3 class="h4 text-danger" style="font-weight: 300;">Ссылки</h3>
-    <p class="text-muted">Наши ресурсы в сети интернет</p>
-    <a href="https://ok.ru/profile/539066633718"><img src="/images/icon_ok.png" width="64px" /></a>
-    <a href="#"><img src="/images/icon_youtube.png" width="64px" /></a>
+    <section class="my-4 border rounded p-3" id='markdown'>
+      <h3 class="h4 text-danger" style="font-weight: 300;">Ссылки</h3>
+      <p class="text-muted">Наши ресурсы в сети интернет</p>
+      {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'melink' })) }}
     </section>
   </aside>
 

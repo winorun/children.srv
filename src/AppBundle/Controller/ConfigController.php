@@ -60,6 +60,7 @@ class ConfigController extends Controller
     /**
      * @Route("/footer", name="formFooter", defaults={"edit_param" = "footer"}))
      * @Route("/sitebar", name="formSitebar", defaults={"edit_param" = "sitebar"}))
+     * @Route("/linksbar", name="formLinks", defaults={"edit_param" = "melink"}))
      */
     public function footerAction(Request $request, $edit_param)
     {
