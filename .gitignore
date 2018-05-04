@@ -15,4 +15,5 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-link-md-tex-pdf-bd
+/link-md-tex-pdf-bd
+/deploy.log
