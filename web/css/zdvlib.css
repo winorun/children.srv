@@ -190,3 +190,18 @@ section h4{
   width: 64px;
   /*width="64px"*/
 }
+
+
+/*============================
+       NEWS PICTURE
+  ============================*/
+
+.prew_img {
+  max-width: 100%;
+}
+/* Для больших устройств (ноуты, пк) */
+@media (min-width: 1024px) {
+  .prew_img {
+    max-width: 80%;
+  }
+}
