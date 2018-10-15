@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}{{news.title}}{% endblock %}
 
 {% block body %}
@@ -13,6 +14,9 @@
  </h1></div>
  <article>
 <div style=" font-style: italic;" class="lead" >{{news.summary}}</div>
+{% if news.imageHref %}
+<img src={{news.imageHref}} class="caption-img"/>
+{% endif %}	
 <div class="lead" >{{news.content|raw}}</div>
 Опубликовано:  {{news.publicationDate|strftime()}}
 </article>

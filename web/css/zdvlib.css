@@ -209,3 +209,12 @@ li.baner{
 img.logo {
   height:30px
 }
+
+img.caption-img{
+    max-width: 50%;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px;
+    border-style: solid;
+}
