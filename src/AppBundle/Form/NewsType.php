@@ -15,11 +15,11 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, array('label' => 'Заголовок','attr'=>array('placeholder'=>'Имя страницы')))
-            ->add('imageHref', TextType::class, array('label' => 'Заголовок'))
-            ->add('summary', TextareaType::class, array('label' => 'Описание'))
-            ->add('content', TextareaType::class, array('label' => 'Create Task','required' => false))
-			->add('publicationDate', DateType::class, array('label' => 'Описание'))
+            ->add('title', TextType::class, array('label' => 'Заголовок:','attr'=>array('placeholder'=>'Имя страницы')))
+            ->add('imageHref', TextType::class, array('label' => 'Изображения:','attr'=>array('placeholder'=>'Изображения')))
+            ->add('summary', TextareaType::class, array('label' => 'Анотация:','attr'=>array('placeholder'=>'Анотация','maxlength'=>'1000')))
+            ->add('content', TextareaType::class, array('label' => false,'required' => false))
+			->add('publicationDate', DateType::class, array('label' => 'Дата публикации:'))
             ->add('save', SubmitType::class, array('label' => 'Сохранить'))
         ;
     }

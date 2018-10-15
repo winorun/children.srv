@@ -4,6 +4,27 @@
 {% block content %}
 <h1>{{news is not defined ? 'Добавить': 'Редактируем'}} новость</h1>
 {{ form_start(form) }}
+      {{form_row(form.title)}}
+      {{form_row(form.imageHref)}}
+      {{form_row(form.summary)}}
+
+      <p>Для набора «французских кавычек — ёлочек» нажимаем Alt и набираем на цифровой панели справа: 0171, отпускаем Alt — получаем "«".
+      Нажимаем Alt, набираем 0187, отпускаем Alt — получаем "»".</p>
+      <p>В Linux для набора «французских кавычек — ёлочек» нажимаем Win+Shift + >>.
+      отпускаем Win — получаем "»".</p>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default" onclick="enableCKEDITOR()">CKEDITOR</button>
+        <button type="button" class="btn btn-default" onclick="enableSimpleMDE()">SimpleMDE</button>
+      </div>
+          {{form_row(form.content)}}
+          {{form_row(form.publicationDate)}}
+      <div>
+        {{ form_widget(form.save) }}
+        <button type="submit" name="cancel" class="btn btn-default" >Отмена</button>
+        {% if news is defined %}
+        <button href="{{ path('DellNews',{'page':news.id})}}" class="btn btn-default" onclick="return confirm('Удалить страницу?')">Удалить</button>
+        {% endif %}
+      </div>
 {{ form_widget(form) }}
 {{ form_end(form) }}
 
@@ -36,25 +57,25 @@
   <script src="/ckeditor/ckeditor.js"></script>
   <script>
   // new SimpleMDE({ element: document.getElementById('content') });
-  var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+  var simplemde = new SimpleMDE({ element: document.getElementById("news_content") });
   <!--
   function enableCKEDITOR() {
     if(simplemde != null){
       simplemde.toTextArea();
       simplemde = null;      
     }
-    var hEd = CKEDITOR.instances['content'];
+    var hEd = CKEDITOR.instances['news_content'];
     if (!hEd) {
-      CKEDITOR.replace( 'content' );   
+      CKEDITOR.replace( 'news_content' );   
     }
   }
   function enableSimpleMDE(){
-    var hEd = CKEDITOR.instances['content'];
+    var hEd = CKEDITOR.instances['news_content'];
     if (hEd) {
-      CKEDITOR.instances['content'].destroy();  
+      CKEDITOR.instances['news_content'].destroy();  
     }
     if(simplemde == null){
-      simplemde = new SimpleMDE({ element: document.getElementById("content") });
+      simplemde = new SimpleMDE({ element: document.getElementById("news_content") });
     }
   }
     -->
