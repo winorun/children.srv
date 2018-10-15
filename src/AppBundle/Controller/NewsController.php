@@ -129,7 +129,7 @@ class NewsController extends Controller
 
                 return $this->redirectToRoute('showNews',array('id' => $news->getId()));
             }
-            // return $this->redirectToRoute('articleList');
+            return $this->redirectToRoute('News');
         }
 
         return $this->render('news/form2.html.twig', array(
