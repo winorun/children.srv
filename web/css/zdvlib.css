@@ -128,9 +128,9 @@ time.icon strong
 {
   padding: 0.4em 0;
   color: #fff;
-  background-color: #E95420;
-  border-bottom: 1px dashed #f37302;
-  box-shadow: 0 2px 0 #E95420;
+  background-color: #343a40;
+  border-bottom: 1px dashed #25292d;
+  box-shadow: 0 2px 0 #222629;
 }
 
 time.icon em
@@ -138,7 +138,7 @@ time.icon em
   /*position: absolute;*/
   /*bottom: 0.3em;*/
   order:2;
-  color: #E95420;
+  color: #343a40;
 }
 
 time.icon span
@@ -178,9 +178,9 @@ li.baner{
  
   ============================*/
 
-section h4{
+/*section h4{
   color: #DF382C !important;
-}
+}*/
 
 #markdown p{
   color: #868e96 !important;
@@ -204,4 +204,8 @@ section h4{
   .prew_img {
     max-width: 80%;
   }
+}
+
+img.logo {
+  height:30px
 }

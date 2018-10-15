@@ -3,19 +3,18 @@
   <head>
     {%block meta%}
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     {%endblock%}
-    <meta name="description" content='{% block description %} Сайт Здвинской детской библиотеки {%endblock%}'>
+    <meta name="description" content='{% block description %} Сайт Здвинской библиотеки {%endblock%}'>
     <link rel="shortcut icon" href="/images/favicon.png">
     <title>
-      {% block title %}МКУК Здвинская ЦБС Детское отделение{% endblock %}
+      {% block title %}МКУК Здвинская ЦБС {% endblock %}
     </title>
     {% block stylesheets %}
-      {# <link rel="stylesheet" href="/css/bootstrap.css" media="screen"> #}
-      <link rel="stylesheet" href="/css/united/bootstrap.min.css" media="screen">
-      <link rel="stylesheet" href="/css/custom.min.css">
+      <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+      {# <link rel="stylesheet" href="/css/custom.min.css"> #}
       <link rel="stylesheet" href="/css/zdvlib.css">
     {% endblock %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
      var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-23019901-1']);
@@ -40,10 +39,6 @@
 {% block body %}
     <div class="col-md-8">
     {% block content %}
-      <div class="jumbotron">
-        <h1>ChildLib</h1>
-          <p>Это сайт детского отделения МКУК Здвинской централизованной системы</p>
-      </div>
       {{ render(controller('AppBundle:News:recentNews',{ 'max': 6 })) }}
     {% endblock %}
     </div>
