@@ -24,8 +24,6 @@ class NewsController extends Controller
                 ->getQuery();
         }else{
             $query = $repository->createQueryBuilder('p')
-                // ->where('p.price > :price')
-                // ->setParameter('price', '19.99')
                 ->orderBy('p.publicationDate', 'DESC')
                 ->getQuery();
         }
