@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+<h1>{{news is not defined ? 'Добавить': 'Редактируем'}} новость</h1>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+{%endblock%}
+
+{% block stylesheets %}
+{{ parent() }}
+ <link rel="stylesheet" type="text/css" href="/css/simplemde.min.css" />
+{#
+  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mess.css" />
+  #}
+{% endblock %}
+
+{% block meta %}
+{{ parent() }}
+<meta name="robots" content="none"/>
+{% endblock %}
+
+
+{% block description %}
+  {% if news is defined %}
+    {{ news.summary }}
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+  <script src="/js/simplemde.min.js"></script>
+  <script src="/ckeditor/ckeditor.js"></script>
+  <script>
+  // new SimpleMDE({ element: document.getElementById('content') });
+  var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+  <!--
+  function enableCKEDITOR() {
+    if(simplemde != null){
+      simplemde.toTextArea();
+      simplemde = null;      
+    }
+    var hEd = CKEDITOR.instances['content'];
+    if (!hEd) {
+      CKEDITOR.replace( 'content' );   
+    }
+  }
+  function enableSimpleMDE(){
+    var hEd = CKEDITOR.instances['content'];
+    if (hEd) {
+      CKEDITOR.instances['content'].destroy();  
+    }
+    if(simplemde == null){
+      simplemde = new SimpleMDE({ element: document.getElementById("content") });
+    }
+  }
+    -->
+  </script>
+{% endblock %}

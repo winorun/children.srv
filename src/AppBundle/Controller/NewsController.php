@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Michelf\MarkdownExtra;
 
 use AppBundle\Entity\News;
+use AppBundle\Form\NewsType;
 use Doctrine\ORM\EntityManagerInterface;
 
 class NewsController extends Controller
@@ -113,22 +114,44 @@ class NewsController extends Controller
      */
     public function addAction(Request $request)
     {
-        if($request->request->has("saveChanges")){
-            $news = new News();
 
-            $this->storeFormValues($news,$request->request->all());
+        $news = new News();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($news);
-            $em->flush();
+        $form = $form = $this->createForm(NewsType::class, $news);
 
-            return $this->redirectToRoute('News',array('message'=>'sНовость сохранена'));
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if($form->get('save')->isClicked()){
+                $news = $form->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($news);
+                $em->flush();
+
+                return $this->redirectToRoute('showNews',array('id' => $news->getId()));
+            }
+            // return $this->redirectToRoute('articleList');
         }
-        if($request->request->has("cancel")){
-            return $this->redirectToRoute('News',array('message'=>'iОперация отменена'));
-        }          
-        $path=$request->getPathInfo();
-        return $this->render('news/form.html.twig',array('path'=>$path,'title'=>'Добавить новость'));
+
+        return $this->render('news/form2.html.twig', array(
+            'form' => $form->createView()
+        ));
+
+        // if($request->request->has("saveChanges")){
+        //     $news = new News();
+
+        //     $this->storeFormValues($news,$request->request->all());
+
+        //     $em = $this->getDoctrine()->getManager();
+        //     $em->persist($news);
+        //     $em->flush();
+
+        //     return $this->redirectToRoute('News',array('message'=>'sНовость сохранена'));
+        // }
+        // if($request->request->has("cancel")){
+        //     return $this->redirectToRoute('News',array('message'=>'iОперация отменена'));
+        // }          
+        // $path=$request->getPathInfo();
+        // return $this->render('news/form.html.twig',array('path'=>$path,'title'=>'Добавить новость'));
     }
 
     /**
