@@ -127,9 +127,10 @@ class NewsController extends Controller
                 $em->persist($news);
                 $em->flush();
 
-                return $this->redirectToRoute('showNews',array('id' => $news->getId()));
+                // return $this->redirectToRoute('ShowNews',array('id' => $news->getId(),'message'=>'sНовость сохранена'));
+                return $this->redirectToRoute('News',array('message'=>'sНовость сохранена'));
             }
-            return $this->redirectToRoute('News');
+            return $this->redirectToRoute('News',array('message'=>'iОперация отменена'));
         }
 
         return $this->render('news/form2.html.twig', array(

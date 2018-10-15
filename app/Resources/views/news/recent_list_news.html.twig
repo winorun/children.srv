@@ -12,7 +12,11 @@
     {% endif %}
     </h2>
     	{% if new.imageHref %}
-    	<img src={{new.imageHref}} class="prew_img"/>
+            {% if 'http' in new.imageHref %}
+                <img src={{new.imageHref}} class="prew_img" alt="{{ new.imageFile }}"/>
+            {% else %}
+                <img src="{{ vich_uploader_asset(new, 'imageFile') }}" class="prew_img"/>
+            {% endif %}
     	{% endif %}	
     	{% if new.summary %}
     		<p class="summary lead">{{new.summary}}

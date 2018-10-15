@@ -14,9 +14,15 @@
  </h1></div>
  <article>
 <div style=" font-style: italic;" class="lead" >{{news.summary}}</div>
+
 {% if news.imageHref %}
-<img src={{news.imageHref}} class="caption-img"/>
+    {% if 'http' in news.imageHref %}
+        <img src={{news.imageHref}} class="caption-img"/>
+    {% else %}
+        <img src="{{ vich_uploader_asset(news, 'imageFile') }}" class="caption-img"/>
+    {% endif %}
 {% endif %}	
+
 <div class="lead" >{{news.content|raw}}</div>
 Опубликовано:  {{news.publicationDate|strftime()}}
 </article>
