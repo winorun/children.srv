@@ -22,6 +22,12 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/pdf'
             namer:                 
                 service: vich_uploader.namer_hash
+        img:
+            uri_prefix: /public/images/pub
+            upload_destination: '%kernel.project_dir%/public/images/pub'
+            namer:                 
+                service: vich_uploader.namer_hash
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }

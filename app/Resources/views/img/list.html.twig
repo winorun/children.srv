@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+{{ parent() }}
+	<meta name="robots" content="none"/>
+{% endblock %}
+
+{% block title %}
+    Админка | Менеджер Изображений
+{% endblock %}
+
+{% block body %}
+     <div class="col-md-8">
+		<header class="page-header">
+		  <h1 >Менеджер Изображений</h1>
+		</header>
+
+		<div class="row">
+			{% for img in imgs %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ vich_uploader_asset(img, 'img') }}">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                  	<textarea class="form-control">{{ vich_uploader_asset(img, 'img') }}</textarea>
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-outline-secondary"
+                       href="{{ path('dellImg',{'id':img.id})}}" onclick="return confirm('Удалить страницу')">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           {% endfor %}	 
+        </div>
+
+		<h2 >Добавить изображение</h2>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		{{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
