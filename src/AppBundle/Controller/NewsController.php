@@ -90,7 +90,7 @@ class NewsController extends Controller
             if($form->get('save')->isClicked()){
                 $news = $form->getData();
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($news);
+                //$em->persist($news);
                 $em->flush();
 
                 return $this->redirectToRoute('News',array('message'=>'sНовость сохранена'));
