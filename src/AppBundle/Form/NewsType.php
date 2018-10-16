@@ -18,7 +18,7 @@ class NewsType extends AbstractType
         $builder
             ->add('title', TextType::class, array('label' => 'Заголовок:','attr'=>array('placeholder'=>'Имя страницы')))
             // ->add('imageHref', TextType::class, array('label' => 'Изображения:','attr'=>array('placeholder'=>'Изображения')))
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class,  array('label' => 'Изображение:','required' => false))
             ->add('summary', TextareaType::class, array('label' => 'Анотация:','attr'=>array('placeholder'=>'Анотация','maxlength'=>'1000')))
             ->add('content', TextareaType::class, array('label' => false,'required' => false))
 			->add('publicationDate', DateType::class, array('label' => 'Дата публикации:'))

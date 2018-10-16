@@ -5,7 +5,7 @@
 <h1>{{news is not defined ? 'Добавить': 'Редактируем'}} новость</h1>
 {{ form_start(form) }}
       {{form_row(form.title)}}
-      {# {{form_row(form.imageHref)}} #}
+      {{form_row(form.imageFile)}}
       {{form_row(form.summary)}}
 
       <p>Для набора «французских кавычек — ёлочек» нажимаем Alt и набираем на цифровой панели справа: 0171, отпускаем Alt — получаем "«".
