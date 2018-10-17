@@ -11,15 +11,12 @@
     <a class= "admin_link" href="{{ path('DellNews',{'page':new.id})}}" onclick="return confirm('Удалить страницу')" >&#x2718</a>
     {% endif %}
     </h2>
+<p class="summary lead prew_img_summary">
     	{% if new.imageHref %}
-            {% if 'http' in new.imageHref %}
-                <img src={{new.imageHref}} class="prew_img" alt="{{ new.imageFile }}"/>
-            {% else %}
-                <img src="{{ vich_uploader_asset(new, 'imageFile') }}" class="prew_img"/>
-            {% endif %}
+            <img src="{% if 'http' in new.imageHref %}{{new.imageHref}}{% else %}{{ vich_uploader_asset(new, 'imageFile') }}{% endif %}" class="{% if new.summary %}prew_img_summary{% else %}prew_img{% endif %}"/>
     	{% endif %}	
     	{% if new.summary %}
-    		<p class="summary lead">{{new.summary}}
+    		{{new.summary}}
     			{% if new.content %}
 				<a href="{{ path('ShowNews',{'page':new.id})}}"> Читать далее </a>
 				{% endif %}
