@@ -2,6 +2,7 @@
 /app/config/parameters.yml
 /build/
 /phpunit.xml
+/old/*
 /var/*
 /public/*
 /web/public/*
