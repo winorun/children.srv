@@ -2,7 +2,10 @@
 /app/config/parameters.yml
 /build/
 /phpunit.xml
-/old/*
+/public_html/old/*
+/public_html/mibew/cache/*
+/public_html/mibew/configs/config.yml
+/public_html/mibew/files/
 /var/*
 /public/*
 /web/public/*
