@@ -197,19 +197,40 @@ li.baner{
   ============================*/
 
 .prew_img {
-  max-width: 100%;
+  width: 100%;
 }
-/* Для больших устройств (ноуты, пк) */
-@media (min-width: 1024px) {
-  .prew_img {
-    max-width: 80%;
-  }
+
+img.caption-img{
+    width: 100%!important;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px;
+    border-style: solid;
 }
 
 img.prew_img_summary{
-    max-width: 40%; 
-    width: 40%;  
+    width: 100%!important;
     float: left;
+}
+
+/* Для больших устройств (ноуты, пк) */
+@media (min-width: 1024px) {
+  .prew_img {
+    width: 80%;
+  }
+  img.caption-img{
+      width: 50%!important;
+      float: left;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      border: 1px;
+      border-style: solid;
+  }
+  img.prew_img_summary{
+    width: 50%!important;
+    float: left;
+  }
 }
 
 p.prew_img_summary{
@@ -218,15 +239,6 @@ p.prew_img_summary{
 
 img.logo {
   height:30px
-}
-
-img.caption-img{
-    max-width: 50%;
-    float: left;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    border: 1px;
-    border-style: solid;
 }
 
 img.buner{
