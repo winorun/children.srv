@@ -207,7 +207,8 @@ li.baner{
 }
 
 img.prew_img_summary{
-    max-width: 40%;  
+    max-width: 40%; 
+    width: 40%;  
     float: left;
 }
 
