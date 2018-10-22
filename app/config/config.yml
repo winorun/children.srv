@@ -27,6 +27,11 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/images/pub'
             namer:                 
                 service: vich_uploader.namer_hash
+        buner:
+            uri_prefix: /public/images/buner
+            upload_destination: '%kernel.project_dir%/public/images/buner'
+            namer:                 
+                service: vich_uploader.namer_hash
 
 framework:
     #esi: ~

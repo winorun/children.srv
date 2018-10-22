@@ -228,3 +228,8 @@ img.caption-img{
     border: 1px;
     border-style: solid;
 }
+
+img.buner{
+  width: 155px;
+  padding: 10px;
+}
