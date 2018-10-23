@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Наш коллектив{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+ <div class="page-header"><h1>Наш коллектив</h1></div>
+ <article>
+<div class="row">
+	{% for obj in objs %}
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" src="{{ vich_uploader_asset(obj, 'imageFile') }}">
+        <div class="card-body">
+          	<h4 class="card-text" >{{obj.name}}</h4>
+          	<p class="card-text" >{{obj.description}}</p>
+        </div>
+      </div>
+    </div>
+   {% endfor %}	 
+</div>
+</article>
+</div>
+{% endblock %}
+
+{% block description %}
+Коллектив Здвинской центральной библиотеки
+{% endblock %}

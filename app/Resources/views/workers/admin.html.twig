@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+{{ parent() }}
+	<meta name="robots" content="none"/>
+{% endblock %}
+
+{% block title %}
+    Админка | Коллектив
+{% endblock %}
+
+{% block body %}
+     <div class="col-md-8">
+		<header class="page-header">
+		  <h1 >Коллектив</h1>
+		</header>
+		<div class="table-responsive">
+			<table class="table">
+				<thead class="">
+					<tr>
+				      <th scope="col">ID</th>
+				      <th scope="col">Превью</th>
+				      <th scope="col">Описание</th>
+				      <th scope="col">Имя</th>
+				      <th scope="col"></th>
+				    </tr>
+				</thead>
+				<tbody>
+		{% for object in objs %}
+			    <tr valign="middle">
+			      <th scope="row" class="align-middle">{{object.id}}</th>
+			      <td class="align-middle" >
+			      	<img width="160" height="120" src="{{ vich_uploader_asset(object, 'imageFile') }}">
+			      </td>
+			      <td class="align-middle">{{object.description}}</td>
+			      <td class="align-middle">{{object.name}}</td>
+				  <td class="align-middle">
+				  	<a href   = "{{ path('EditWorkers',{'id':object.id})}}" 
+				  	   class  = "admin_link bigfont" 
+				  	   title  = "Редактировать">&#x270E 
+				  	</a>
+				  	<a href   = "{{ path('DellWorkers',{'id':object.id})}}" 
+				  	   class  = "admin_link bigfont" 
+				  	   onclick= "return confirm('Удалить страницу')" 
+				  	   title  = "Удалить" > &#x2718 
+				  	</a>
+				  </td>
+			    </tr>
+		{% endfor %}
+				</tbody>	
+			</table>
+		<h2 >Добавить сотрудника</h2>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
+    </div>
+{% endblock %}
+
+
