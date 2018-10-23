@@ -11,7 +11,8 @@
 	{% for obj in objs %}
     <div class="col-md-4">
       <div class="card mb-4 box-shadow">
-        <img class="card-img-top" src="{{ vich_uploader_asset(obj, 'imageFile') }}">
+        <a data-fancybox="gallery" href="{{ vich_uploader_asset(obj, 'imageFile') }}">
+        	<img class="card-img-top" src="{{ vich_uploader_asset(obj, 'imageFile') }}"></a>
         <div class="card-body">
           	<h4 class="card-text" >{{obj.name}}</h4>
           	<p class="card-text" >{{obj.description}}</p>
@@ -26,4 +27,14 @@
 
 {% block description %}
 Коллектив Здвинской центральной библиотеки
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link  href="/css/jquery.fancybox.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="/js/jquery.fancybox.min.js"></script>
 {% endblock %}
