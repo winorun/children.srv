@@ -1,0 +1,21 @@
+<div id="carousel-example-generic" class="carousel slide" style="padding: 1%" data-ride="carousel">
+  <ol class="carousel-indicators">
+{% for object in buners %}
+    <li data-target="#carousel-example-generic" data-slide-to="0" 
+{% if object.id == 1 %}
+    class="active"
+{% endif %}
+    ></li>
+{% endfor %}
+    
+  </ol>
+  <div class="carousel-inner" role="listbox">
+{% for object in buners %}    
+    <div class="carousel-item {% if object.id == 1 %} active {% endif %}">
+    	<a title="{{object.description}}" href="{{object.link}}">
+      <img src="{{ vich_uploader_asset(object, 'imageFile') }}" width="100%" alt="{{object.description}}">
+  </a>
+    </div>
+{% endfor %}  
+  </div>
+</div> 

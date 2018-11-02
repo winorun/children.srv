@@ -26,7 +26,9 @@
 {% block body %}
     <div class="col-md-8">
     {% block content %}
-      
+
+      {{ render(controller('AppBundle:BigBuner:recent')) }}
+
       {{ render(controller('AppBundle:News:recentNews',{ 'max': 6 })) }}
     {% endblock %}
     </div>

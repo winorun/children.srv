@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+{{ parent() }}
+	<meta name="robots" content="none"/>
+{% endblock %}
+
+{% block title %}
+    Админка | Менеджер Карусели
+{% endblock %}
+
+{% block body %}
+     <div class="col-md-8">
+		<header class="page-header">
+		  <h1 >Менеджер Карусели</h1>
+		</header>
+		<div class="table-responsive">
+			<table class="table">
+				<thead class="">
+					<tr>
+				      <th scope="col">ID</th>
+				      <th scope="col">Превью</th>
+				      <th scope="col">Описание</th>
+				      <th scope="col">Ссылка</th>
+				      <th scope="col"></th>
+				    </tr>
+				</thead>
+				<tbody>
+		{% for object in objs %}
+			    <tr valign="middle">
+			      <th scope="row" class="align-middle">{{object.id}}</th>
+			      <td class="align-middle" >
+			      	<img width="180"  src="{{ vich_uploader_asset(object, 'imageFile') }}">
+			      </td>
+			      <td class="align-middle">{{object.description}}</td>
+			      <td class="align-middle">{{object.link}}</td>
+				  <td class="align-middle">
+				  	<a href   = "{{ path('EditBuner',{'id':object.id})}}" 
+				  	   class  = "admin_link bigfont" 
+				  	   title  = "Редактировать">&#x270E 
+				  	</a>
+				  	<a href   = "{{ path('DellBuner',{'id':object.id})}}" 
+				  	   class  = "admin_link bigfont" 
+				  	   onclick= "return confirm('Удалить страницу')" 
+				  	   title  = "Удалить" > &#x2718 
+				  	</a>
+				  </td>
+			    </tr>
+		{% endfor %}
+				</tbody>	
+			</table>
+		<h2 >Баннер</h2>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
+    </div>
+{% endblock %}
+
+
