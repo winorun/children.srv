@@ -7,8 +7,4 @@ logout:
 
 sitemap:
     path:     /sitemap.xml
-    defaults: { _controller: AppBundle:Config:sitemap, _format: xml }
-
-search:
-    path:     /search
-    defaults: { _controller: AppBundle:Config:search }
+    defaults: { _controller: AppBundle:Default:sitemap, _format: xml }

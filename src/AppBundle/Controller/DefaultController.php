@@ -6,13 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
-use AppBundle\Entity\Markdown;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 
-use Michelf\MarkdownExtra;
-
+use AppBundle\Entity\Article;
+use AppBundle\Entity\News;
 
 class DefaultController extends Controller
 {
@@ -26,14 +24,30 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/sitemap.xml", defaults={"_format"="xml"}, name="Sitemap")
      */
-    public function testAction(Request $request)
+    public function sitemapAction(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository(Markdown::class);
-        $product = $repository->findOneByName('sitebar');
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('AppBundle:Article')->findAll();
+        $news = $em->getRepository('AppBundle:News')->findAll();
 
-        $title=MarkdownExtra::defaultTransform($product->getContent());
-       return $this->render('test.html.twig',array('title' => $title));
+        $response = new Response();
+        $response->headers->set('Content-Type', 'xml');
+
+        return $this->render('admin/sitemap.xml.twig',array('article'=>$article,'news'=>$news));
     }
+
+ 
+    /**
+     * @Route("/search", name="Search")
+     */
+    public function searchAction(Request $request)
+    {
+        $seachString="http://google.ru/search?q=site:".$request->headers->get('host').
+        " ".$request->get('query');
+        return $this->redirect($seachString);
+
+    }
+
 }

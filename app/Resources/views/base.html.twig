@@ -40,7 +40,7 @@
     <section class="my-4 border rounded p-3">
     <h3 class="h4 text-danger" style="font-weight: 300;">Найти на сайте</h3>
     <p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>
-    <form action="search" method="get" role="search">   
+    <form action="{{ path('Search') }}" method="get" role="search">   
       <div class="input-group">
         <input type="text" name="query" class="form-control" placeholder="Что найти?" value="">        
         <div class="input-group-append">
@@ -55,7 +55,7 @@
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'melink' })) }}
     </section>
     <section class="my-4 border rounded p-3">
-      <h3 class="h4 text-danger" style="font-weight: 300;">Интересности</h3>
+      <h3 class="h4 text-danger" style="font-weight: 300;">Обратите внимение</h3>
     {% block  buner  %}
       {{ render(controller('AppBundle:Buner:recentBuner')) }}
     {% endblock %}

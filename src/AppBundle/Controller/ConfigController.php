@@ -82,28 +82,4 @@ class ConfigController extends Controller
         }
        return $this->render('menu/form.html.twig',array('form' => $form->createView()));
     }
-
-    /**
-     * @Route("/sitemap.xml", defaults={"_format"="xml"}, name="Sitemap")
-     */
-    public function sitemapAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('AppBundle:Article')->findAll();
-        $news = $em->getRepository('AppBundle:News')->findAll();
-
-        $response = new Response();
-        $response->headers->set('Content-Type', 'xml');
-
-        return $this->render('admin/sitemap.xml.twig',array('article'=>$article,'news'=>$news));
-    }
-
- 
-    public function searchAction(Request $request)
-    {
-        $seachString="http://google.ru/search?q=site:".$request->headers->get('host').
-        " ".$request->get('query');
-        return $this->redirect($seachString);
-
-    }
 }
