@@ -15,7 +15,8 @@
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-{% if is_granted('ROLE_ADMIN') %}   
+{% if is_granted('ROLE_ADMIN') %}  
+		  <li class="nav-item"><a class="nav-link" href="/lhc_web/index.php/site_admin/">Online</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Администратирование</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -23,6 +24,7 @@
               <a class="dropdown-item" href="{{ path('pdfList') }}">Документов</a>
               <a class="dropdown-item" href="{{ path('imageList') }}">Изображений</a>
               <a class="dropdown-item" href="{{ path('Buner') }}">Банеров</a>
+              <a class="dropdown-item" href="{{ path('BigBuner') }}">Большой Банер</a>
               <a class="dropdown-item" href="{{ path('formMenu') }}">Меню</a>
               <a class="dropdown-item" href="{{ path('formFooter') }}">Подвала</a>
               <a class="dropdown-item" href="{{ path('formSitebar') }}">Расписание</a>
