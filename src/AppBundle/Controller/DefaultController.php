@@ -20,7 +20,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-       return $this->render('base.html.twig');
+       return $this->render('main.html.twig');
     }
 
     /**
