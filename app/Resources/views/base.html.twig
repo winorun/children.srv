@@ -37,6 +37,11 @@
     </div>
 {% endblock %}
   <aside id="sidebar" class="col-md-4" style="border-left: 1px solid #f8f9fa;">
+    <section class="my-4 border rounded p-3">
+      <h3 class="h4 text-danger" style="font-weight: 300;">Сайт находится в разработке</h2>
+      <p class="text-muted">Сайт находится в активной разработке. Просим прощение за неудобства.
+        в случае обнаружение ошибки сообщите нам.</p>
+    </section>
     <section class="my-4 border rounded p-3" id='markdown'>
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
     </section>
