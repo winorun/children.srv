@@ -17,9 +17,12 @@
 
 {% if news.imageHref %}
     {% if 'http' in news.imageHref %}
+    <a data-fancybox href="{{news.imageHref}}">
         <img src={{news.imageHref}} class="caption-img"/>
+    </a>
     {% else %}
-        <img src="{{ vich_uploader_asset(news, 'imageFile') }}" class="caption-img"/>
+    	<a data-fancybox href="{{ vich_uploader_asset(news, 'imageFile') }}">
+        <img src="{{ vich_uploader_asset(news, 'imageFile') }}" class="caption-img"/></a>
     {% endif %}
 {% endif %}	
 
@@ -31,4 +34,14 @@
 
 {% block description %}
 {{news.summary}}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link  href="/css/jquery.fancybox.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="/js/jquery.fancybox.min.js"></script>
 {% endblock %}

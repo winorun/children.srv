@@ -13,3 +13,13 @@
 
 </div>
 {%endblock%}
+
+{% block stylesheets %}
+{{ parent() }}
+<link  href="/css/jquery.fancybox.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="/js/jquery.fancybox.min.js"></script>
+{% endblock %}
