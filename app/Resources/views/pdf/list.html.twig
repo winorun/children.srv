@@ -21,6 +21,8 @@
 				      <th>ID</th>
 				      <th>Название</th>
 				      <th></th>
+				      <th>download</th>
+				      <th>view</th>
 				    </tr>
 				</thead>
 		{% for pdf in pdfs %}
@@ -28,6 +30,8 @@
 			      <td>{{pdf.id}}</td>
 			      <td><a href="{{ path('showPdf',{'id':pdf.id})}}" >{{pdf.name}}</a></td>
 				  <td><a href="{{ path('dellPdf',{'id':pdf.id})}}" class= "admin_link bigfont" onclick="return confirm('Удалить страницу')" title="Удалить" > &#x2718 </a></td>
+				  <td><a href="{{ vich_uploader_asset(pdf, 'pdf') }}" >скачать</a></td>
+				  <td><a href="/pdfjs/web/viewer.html?file={{ vich_uploader_asset(pdf, 'pdf') }}" >просмотр</a></td>
 			    </tr>
 		{% endfor %}	
 			</table>
