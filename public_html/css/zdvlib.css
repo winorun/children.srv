@@ -216,9 +216,9 @@ img.prew_img_summary{
 
 /* Для больших устройств (ноуты, пк) */
 @media (min-width: 1024px) {
-  .prew_img {
+/*  .prew_img {
     width: 80%;
-  }
+  }*/
   img.caption-img{
       width: 50%!important;
       float: left;
