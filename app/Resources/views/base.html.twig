@@ -38,14 +38,23 @@
 {% endblock %}
   <aside id="sidebar" class="col-md-4" style="border-left: 1px solid #f8f9fa;">
     <section class="my-4 border rounded p-3">
-      <h3 class="h4 text-danger" style="font-weight: 300;">Сайт находится в разработке</h2>
+      <h3 class="h4 text-danger" style="font-weight: 300;">Сайт находится в разработке</h3>
       <p class="text-muted">Сайт находится в активной разработке. Приносим извенения за доставленные неудобства.</p>
     </section>
     <section class="my-4 border rounded p-3" id='markdown'>
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
     </section>
     <section class="my-4 border rounded p-3">
-    <h3 class="h4 text-danger" style="font-weight: 300;">Найти на сайте</h3>
+      <a class="h4 text-dark" href="#"> Календарь событий</a>
+        <div class="clearfix">
+          <time datetime="2018-10-25" class="icon">
+            <span>25</span>
+            <strong>Ноября</strong>
+          </time>
+      <p class="text-muted">21.10 Вечер памяти</p></div>
+    </section>
+    <section class="my-4 border rounded p-3">
+    <h3 class="h4 text-dark" style="font-weight: 300;">Найти на сайте</h3>
     <p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>
     <form action="{{ path('Search') }}" method="get" role="search">   
       <div class="input-group">
@@ -57,12 +66,12 @@
     </form>  
     </section>
     <section class="my-4 border rounded p-3" id='markdown'>
-      <h3 class="h4 text-danger" style="font-weight: 300;">Ссылки</h3>
+      <h3 class="h4 text-dark" style="font-weight: 300;">Ссылки</h3>
       <p class="text-muted">Наши ресурсы в сети интернет</p>
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'melink' })) }}
     </section>
     <section class="my-4 border rounded p-3">
-      <h3 class="h4 text-danger" style="font-weight: 300;">Обратите внимание!</h3>
+      <h3 class="h4 text-dark" style="font-weight: 300;">Обратите внимание!</h3>
     {% block  buner  %}
       {{ render(controller('AppBundle:Buner:recentBuner')) }}
     {% endblock %}

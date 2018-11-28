@@ -5,7 +5,7 @@
 		{{new.publicationDate|created_ago|raw}}
 	</time> #}
 	<div>
-    <h2>{% if new.summary %}<a href="{{ path('ShowNews',{'page':new.id})}}" class="head-link">{{ new.title }}</a>{% else %}{{ new.title }}{% endif %}
+    <h2 >{% if new.summary %}<a class="text-dark" href="{{ path('ShowNews',{'page':new.id})}}" class="head-link">{{ new.title }}</a>{% else %}{{ new.title }}{% endif %}
     {% if is_granted('ROLE_ADMIN') %}
     <a class= "admin_link" href="{{ path('EditNews',{'page':new.id})}}">&#x270E</a>
     <a class= "admin_link" href="{{ path('DellNews',{'page':new.id})}}" onclick="return confirm('Удалить страницу')" >&#x2718</a>
