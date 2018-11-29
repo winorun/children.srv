@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+    План мероприятий
+{% endblock %}
+
+{% block body %}
+     <div class="col-md-8">
+		<header class="page-header">
+		  <h1 >План мероприятий</h1>
+		</header>
+	<ul style="list-style-type: none;">
+	{% for object in events %}
+		<li {{object.date>date? 'style="text-decoration: line-through;"'}} >{{object.date|date('d.m.Y')}} {{object.title}}</li>
+	{% else %}
+		<p> Нет мероприятий </p>
+	{% endfor %}
+	</ul>
+    </div>
+{% endblock %}
+
+

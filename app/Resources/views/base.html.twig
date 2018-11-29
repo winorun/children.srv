@@ -45,13 +45,7 @@
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
     </section>
     <section class="my-4 border rounded p-3">
-      <a class="h4 text-dark" href="#"> Календарь событий</a>
-        <div class="clearfix">
-          <time datetime="2018-10-25" class="icon">
-            <span>25</span>
-            <strong>Ноября</strong>
-          </time>
-      <p class="text-muted">21.10 Вечер памяти</p></div>
+      {{ render(controller('AppBundle:Calendar:recentCalendar')) }}
     </section>
     <section class="my-4 border rounded p-3">
     <h3 class="h4 text-dark" style="font-weight: 300;">Найти на сайте</h3>

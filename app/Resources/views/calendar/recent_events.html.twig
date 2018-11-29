@@ -1,0 +1,23 @@
+{#
+{% for object in events %}
+<a title="{{object.description}}" href="{{object.link}}">
+	<img src="{{ vich_uploader_asset(object, 'imageFile') }}" 
+		 class="buner" 
+		 alt="{{object.description}}">
+</a>
+{% endfor %}
+#}
+
+<a class="h4 text-dark" href="{{ path('showCalendar') }}"> Календарь событий</a>
+<div class="clearfix">
+  <time datetime="{{date|date('Y-m-d')}}" class="icon">
+		{{date|created_ago|raw}}
+  </time>
+ <ul style="list-style-type: none;">
+  {% for object in events %}
+  <li class="text-muted">{{object.date|date('d.m')}} {{object.title}}</li>
+	{% else %}
+		<p> Нет мероприятий </p>
+  {% endfor %}
+</ul>
+</div>

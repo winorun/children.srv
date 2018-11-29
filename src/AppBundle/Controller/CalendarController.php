@@ -12,24 +12,47 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class CalendarController extends Controller
 {
-
-
     public function recentCalendarAction(){
         $em = $this->getDoctrine()->getManager();
-        $objs = $em->getRepository('AppBundle:Calendar')->findAll();
+        $repository=$em->getRepository('AppBundle:Calendar');
+
+        $date = new \DateTime;
+
+        $query = $repository->createQueryBuilder('p')
+                // ->where('p.date > '+date('Y-m-d',$date->getTimestamp()))
+                ->andWhere('p.date > :date')
+                ->setParameter('date', $date )
+                // ->orderBy('p.date', 'DESC1')
+                ->getQuery();
+
+        $objs = $query->getResult();
 
         return $this->render(
-            'calendar/recent_list_news.html.twig',
-            array('events' => $objs)
+            'calendar/recent_events.html.twig',
+            array('events' => $objs,'date' => $date)
         );
     }
 
-    public function getBunerAction(){
-        $em = $this->getDoctrine()->getManager();
-        $objs = $em->getRepository('AppBundle:Calendar')->findAll();
+    /**
+     * @Route("calendar", name="showCalendar")
+     *
+     */
+    public function showAction(Request $request){
 
-        return $objs;
+        $em = $this->getDoctrine()->getManager();
+        $repository=$em->getRepository('AppBundle:Calendar');
+
+        $query = $repository->createQueryBuilder('p')
+                ->orderBy('p.date', 'DESC')
+                ->getQuery();
+
+        $objs = $query->getResult();
+
+        $date = new \DateTime;
+
+        return $this->render('calendar/list.html.twig',array('events'=>$objs,'date'=>$date));
     }
+
 
     /**
      * @Route("/admin/calendar/{id}", name="EditEvent", requirements={"id": "\d+"})
@@ -39,7 +62,13 @@ class CalendarController extends Controller
     {
         $request = Request::createFromGlobals();
         $em = $this->getDoctrine()->getManager();
-        $objs = $em->getRepository('AppBundle:Calendar')->findAll();
+        $repository=$em->getRepository('AppBundle:Calendar');
+
+        $query = $repository->createQueryBuilder('p')
+                ->orderBy('p.date', 'DESC')
+                ->getQuery();
+
+        $objs = $query->getResult();
         
         if($id!=0){
             $obj = $em->getRepository('AppBundle:Calendar')->find($id);

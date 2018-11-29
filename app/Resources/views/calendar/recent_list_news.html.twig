@@ -1,7 +1,0 @@
-{% for object in buners %}
-<a title="{{object.description}}" href="{{object.link}}">
-	<img src="{{ vich_uploader_asset(object, 'imageFile') }}" 
-		 class="buner" 
-		 alt="{{object.description}}">
-</a>
-{% endfor %}

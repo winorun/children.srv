@@ -18,7 +18,7 @@ class DateExtension extends \Twig_Extension
         $date = $dateTime->getTimestamp();
         $text_return = '<span>'.date("d",$date).'</span>';
         $text_return .= '<strong>'.strftime("%B",$date).'</strong>';
-        $text_return .= '<em>'.date("Y",$date).'</em>';
+        // $text_return .= '<em>'.date("Y",$date).'</em>';
         return $text_return;
     }
 }
