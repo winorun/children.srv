@@ -26,6 +26,10 @@ class Calendar
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $type;
     
     /**
      * Get id
@@ -83,5 +87,28 @@ class Calendar
     public function getDate()
     {
         return $this->date;
+    }
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return News
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

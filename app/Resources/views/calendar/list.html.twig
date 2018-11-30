@@ -13,7 +13,8 @@
 		</header>
 	<ul style="list-style-type: none;">
 	{% for object in events %}
-		<li {{object.date>date? 'style="text-decoration: line-through;"'}} >{{object.date|date('d.m.Y')}} {{object.title}}</li>
+		<li {{object.date<date? 'style="text-decoration: line-through;"'}} >{{object.date|date('d.m.Y')}}
+		{{object.type}} {{object.title}}</li>
 	{% else %}
 		<p> Нет мероприятий </p>
 	{% endfor %}

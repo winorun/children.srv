@@ -19,10 +19,9 @@ class CalendarController extends Controller
         $date = new \DateTime;
 
         $query = $repository->createQueryBuilder('p')
-                // ->where('p.date > '+date('Y-m-d',$date->getTimestamp()))
                 ->andWhere('p.date > :date')
                 ->setParameter('date', $date )
-                // ->orderBy('p.date', 'DESC1')
+                ->orderBy('p.date', 'ASC')
                 ->getQuery();
 
         $objs = $query->getResult();
@@ -43,7 +42,7 @@ class CalendarController extends Controller
         $repository=$em->getRepository('AppBundle:Calendar');
 
         $query = $repository->createQueryBuilder('p')
-                ->orderBy('p.date', 'DESC')
+                ->orderBy('p.date', 'ASC')
                 ->getQuery();
 
         $objs = $query->getResult();
@@ -65,7 +64,7 @@ class CalendarController extends Controller
         $repository=$em->getRepository('AppBundle:Calendar');
 
         $query = $repository->createQueryBuilder('p')
-                ->orderBy('p.date', 'DESC')
+                ->orderBy('p.date', 'ASC')
                 ->getQuery();
 
         $objs = $query->getResult();
