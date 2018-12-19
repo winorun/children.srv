@@ -14,6 +14,16 @@ use AppBundle\Entity\News;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * @Route("/special", name="homepage-special")
+     */
+    public function specialAction(Request $request)
+    {
+        // replace this example code with whatever you need
+       return $this->render('special/base.html.twig');
+    }
+
     /**
      * @Route("/", name="homepage")
      */

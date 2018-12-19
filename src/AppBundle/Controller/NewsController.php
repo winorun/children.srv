@@ -15,7 +15,7 @@ class NewsController extends Controller
 {
 
 
-    public function recentNewsAction($max = 6){
+    public function recentNewsAction($max = 6,$special=false){
 
         $repository = $this->getDoctrine()->getRepository(News::class);
         if($max != 0){
@@ -34,11 +34,8 @@ class NewsController extends Controller
         // $news = $query->setMaxResults(1)->getOneOrNullResult();
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
-
-        return $this->render(
-            'news/recent_list_news.html.twig',
-            array('news' => $news)
-        );
+        if ($special) return $this->render('special/recent_list_news.html.twig',array('news' => $news));
+        return $this->render('news/recent_list_news.html.twig',array('news' => $news));
     }
 
     /**

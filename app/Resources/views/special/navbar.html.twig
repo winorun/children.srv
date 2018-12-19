@@ -1,0 +1,12 @@
+<nav class="menu">
+ <ul class='top_menu'>
+  <li><a href='/special'><span>Главная</span></a></li>
+
+{% if yaml_menu is defined %}
+  {{ render(controller('AppBundle:Menu:showUserMenu',{ 'yaml': yaml_menu,'special': true })) }}
+{% else %}
+  {{ render(controller('AppBundle:Menu:showUserMenu',{ 'special': true })) }}
+{% endif %}
+
+ </ul>
+</nav>
