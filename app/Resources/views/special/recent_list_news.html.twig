@@ -1,0 +1,25 @@
+{% for new in news %}
+<div class="clearfix">
+    <h2 >{{ new.title }}</h2>
+        <p> Опубликовано:
+            <time class="data" datetime="{{new.publicationDate|date('Y-m-d')}}">
+                {{new.publicationDate|date('d.m Y')}} г.
+            </time> 
+        </p>
+        <p>
+    	{% if new.imageHref %}
+        <a data-fancybox href="{% if 'http' in new.imageHref %}{{new.imageHref}}{% else %}{{ vich_uploader_asset(new, 'imageFile') }}{% endif %}">
+
+            <img src="{% if 'http' in new.imageHref %}{{new.imageHref}}{% else %}{{ vich_uploader_asset(new, 'imageFile') }}{% endif %}" class="{% if new.summary %}prew_img_summary{% else %}prew_img{% endif %}"/>
+
+        </a>
+    	{% endif %}
+    	{% if new.summary %}
+    		{{new.summary}}
+    			{% if new.content %}
+				<a href="/special{{ path('ShowNews',{'page':new.id})}}"> <b>Читать далее</b> </a>
+				{% endif %}
+			</p>
+    	{% endif %}	
+</div>
+{% endfor %}

@@ -15,7 +15,7 @@ class NewsController extends Controller
 {
 
 
-    public function recentNewsAction($max = 6){
+    public function recentNewsAction($max = 6,$special=false){
 
         $repository = $this->getDoctrine()->getRepository(News::class);
         if($max != 0){
@@ -34,30 +34,30 @@ class NewsController extends Controller
         // $news = $query->setMaxResults(1)->getOneOrNullResult();
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
-
-        return $this->render(
-            'news/recent_list_news.html.twig',
-            array('news' => $news)
-        );
+        if ($special) return $this->render('special/recent_list_news.html.twig',array('news' => $news));
+        return $this->render('news/recent_list_news.html.twig',array('news' => $news));
     }
 
     /**
-     * @Route("/news/{page}", name="ShowNews", requirements={"page": "\d+"})
+     * @Route("/news/{page}", name="ShowNews", requirements={"page": "\d+"},defaults={"special" = false})
+     * @Route("/special/news/{page}", requirements={"id": "\d+"}, defaults={"special" = true})
      */
-    public function showAction($page)
+    public function showAction($page,$special)
     {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('AppBundle:News')->find($page);
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
         $news->setContent(MarkdownExtra::defaultTransform($news->getContent()));
+        if ($special) return $this->render('special/new.html.twig',array('news'=>$news));
         return $this->render('news/show.html.twig',array('news'=>$news));
     }
 
     /**
-     * @Route("/news", name="News")
+     * @Route("/news", name="News",defaults={"special" = false})
+     * @Route("/special/news", defaults={"special" = true})
      */
-    public function newsAction(Request $request)
+    public function newsAction(Request $request,$special)
     {
         $repository = $this->getDoctrine()->getRepository(News::class);
         $query = $repository->createQueryBuilder('p')
@@ -69,7 +69,7 @@ class NewsController extends Controller
         $news = $query->getResult();
 
         if (!$news) throw $this->createNotFoundException('Новость не найденна');
-
+        if ($special) return $this->render('special/news.html.twig',array('news'=>$news));
         return $this->render('news/list.html.twig',array('news'=>$news));
     }
 

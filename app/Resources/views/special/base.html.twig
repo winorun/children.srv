@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {%block meta%}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%endblock%}
+    <meta name="description" content='{% block description %} Муниципальное казенное учреждение культуры «Здвинская централизованная библиотечная система»(МКУК «Здвинская ЦБС») представляет вашему вниманию сайт Здвинской центральной библиотеки {%endblock%}'>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>
+      {% block title %}МКУК «Здвинская ЦБС» {% endblock %}
+    </title>
+    {% block stylesheets %}
+      {# <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen"> #}
+      {# <link rel="stylesheet" href="/css/custom.min.css"> #}
+      <link rel="stylesheet" href="/css/special.css">
+    {% endblock %}
+  </head>
+  
+<body id="wrapper">
+
+<main  role="main" class="container-fluid">
+<h1 class="logo">МКУК «Здвинская ЦБС»</h1>
+<div style="display:inline-block">
+Размер шрифта:
+      <div class="fond-size fs-small"  onclick="setFontSize('fs-small')"  title="Уменьшенный размер шрифта">A</div>
+      <div class="fond-size fs-normal" onclick="setFontSize('fs-normal')" title="Нормальный размер шрифта">A</div>
+      <div class="fond-size fs-big"    onclick="setFontSize('fs-big')"    title="Увеличенный размер шрифта">A</div>
+</div>
+<div style="display:inline-block">
+<p class="a-colors">
+Цветовая схема:
+      <a class="color1 colorButtons" onclick="setColorSite('color1')" title="Черным по белому">A</a>
+      <a class="color2 colorButtons" onclick="setColorSite('color2')" title="Белым по черному">A</a>
+      <a class="color3 colorButtons" onclick="setColorSite('color3')" title="Желтым по темно-фиолетовому">A</a>
+</p>
+</div>
+<div style="display:inline-block">
+<a href="/">Обычная версия</a>
+</div>
+{{include('special/navbar.html.twig')}}
+  <div class="container">
+    <div class="row">
+      {% block body %}
+            {# {{ render(controller('AppBundle:BigBuner:recent')) }} #}
+      <h1>Вас приветствует МКУК «Здвинская ЦБС»</h1>
+      <p>Муниципальное казенное учреждение культуры «Здвинская 
+        централизованная библиотечная система» 
+      образовалась в 1978 г. из 19 сельских массовых библиотек, 
+      районной библиотеки и детской районной библиотеки. С тех пор мы работае для Вас.</p>
+      <h1>Последние новости</h1>
+
+            {{ render(controller('AppBundle:News:recentNews',{ 'max': 6, 'special':true })) }}
+
+      {% endblock %}
+    </div>
+
+<aside id="sidebar" class="col-md-4" >
+  <section class="border">
+    <h2>Сайт находится в разработке</h2>
+    <p class="text-muted">Сайт находится в активной разработке. Приносим извинения за доставленные неудобства.</p>
+  </section>
+  <section class="border markdown">
+    {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
+  </section>
+  <section class="border markdown">
+    <h2>Ссылки</h2>
+    <p class="text-muted">Наши ресурсы в сети интернет</p>
+    {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'melink' })) }}
+  </section>
+  <section class="border">
+    <h2>Обратите внимание!</h2>
+  {% block  buner  %}
+    {{ render(controller('AppBundle:Buner:recentBuner')) }}
+  {% endblock %}
+  </section>
+</aside>
+
+</div>
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/popper.min.js"></script>
+    <script type="text/javascript" src="/js/special.js"></script>
+{% endblock %}
+</body>
+</html>
+
+

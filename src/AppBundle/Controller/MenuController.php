@@ -14,7 +14,7 @@ class MenuController extends Controller
     /**
      * @todo добавить валидацию и проверки
      */
-    public function showUserMenuAction($yaml=NULL)
+    public function showUserMenuAction($yaml=NULL,$special=false)
     {
     	if($yaml==NULL){
     		$repository = $this->getDoctrine()->getRepository(TextConfig::class);
@@ -22,6 +22,7 @@ class MenuController extends Controller
 			if (!$menu) throw $this->createNotFoundException('Нас взламывают');//:)
 			$yaml = Yaml::parse($menu->getContent());
     	}
+       if($special)return $this->render('special/user_menu.html.twig',array('yaml'=>$yaml));
        return $this->render('user_menu.html.twig',array('yaml'=>$yaml));
     }
 }

@@ -1,0 +1,11 @@
+{% extends 'special/main.html.twig' %}
+
+{% block title %}Наши новости{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+  <h1 >Наши новости</h1>
+{{ include('special/recent_list_news.html.twig', { 'news': news }) }}
+
+</div>
+{%endblock%}
