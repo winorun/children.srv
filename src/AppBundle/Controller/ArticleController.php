@@ -13,10 +13,10 @@ use AppBundle\Form\ArticleType;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/article/{id}", name="showArticle", requirements={"id": "\d+"})
-     *
+     * @Route("/article/{id}", name="showArticle", requirements={"id": "\d+"}, defaults={"special" = false})
+     * @Route("/special/article/{id}", requirements={"id": "\d+"}, defaults={"special" = true})
      */
-    public function showPageAction($id){
+    public function showPageAction($id,$special){
 
     	$em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AppBundle:Article')->find($id);
@@ -24,6 +24,7 @@ class ArticleController extends Controller
         if (!$article) throw $this->createNotFoundException('Страница не найденна');
 
         $article->setContent(MarkdownExtra::defaultTransform($article->getContent()));
+        if ($special) return $this->render('special/article.html.twig',array('article'=>$article));
         return $this->render('article/show.html.twig',array('article'=>$article));
     }  
 

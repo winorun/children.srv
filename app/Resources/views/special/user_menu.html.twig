@@ -1,6 +1,6 @@
 {% for key,value in yaml %}
 	{% if value is iterable %}
-		<li>{{ key }}
+		<li class="mar-top">{{ key }}
 		<ul>
 			{% for sub_key,sub_value in value %}
 				{% if sub_value is not iterable %}
@@ -9,6 +9,6 @@
 			{%endfor%}
 		</ul></li>
 	{% else %}
-	<li><a href="/special{{value}}">{{ key }}</a></li>
+	<li class="mar-top"><a href="/special{{value}}">{{ key }}</a></li>
 	{%endif%}
 {% endfor %}

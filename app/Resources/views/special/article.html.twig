@@ -1,0 +1,14 @@
+{% extends 'special/base.html.twig' %}
+
+{% block title %}{{article.name}}{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+ <div class="page-header"><h1>{{article.name}}</h1></div>
+ <article>
+<div class="lead" >{{article.content|raw}}</div>
+</article>
+</div>
+{% endblock %}
+
+{% block description %} {{article.description}} {% endblock %}

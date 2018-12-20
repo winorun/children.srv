@@ -67,7 +67,7 @@ img.buner{
  */
 
 .menu{
-	font-size: 1.2rem;
+	/*font-size: 1.2em;*/
 }
 
 .menu ul{
@@ -79,7 +79,7 @@ img.buner{
 }
 
 .menu li{
-	width: 10rem;
+	width: 8em;
 	text-align: left;
 	display:inline-block;
 	vertical-align: top;
@@ -93,7 +93,50 @@ ul.top_menu ul{
 	padding-top: 10px;
 }
 
+.mar-top{
+	margin-top: 0.5em;
+}
+
 a{
 	color:inherit;
 	text-decoration: none;
+}
+
+.fs-small { font-size:18px; }
+.fs-normal { font-size:24px; }
+.fs-big { font-size:35px; }
+
+.color2{
+	color:#fff;
+	background-color: #000;
+	border-color: #fff;
+}
+
+.color3{
+	background-color:#1f001f;
+	color:#ff0;
+	border-color: #ff0;
+}
+
+.color1{
+	color:#000;
+	background-color: #fff;
+	border-color: #000;
+}
+
+.colorButtons{
+	text-decoration:none;
+	text-align:center;
+	display:inline-block;
+	padding: 4px;
+	vertical-align:top;
+	border-radius:4px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+div.fond-size{
+	cursor: pointer;
+	cursor: hand;
+	display:inline-block;
 }

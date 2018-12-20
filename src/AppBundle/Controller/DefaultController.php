@@ -21,7 +21,7 @@ class DefaultController extends Controller
     public function specialAction(Request $request)
     {
         // replace this example code with whatever you need
-       return $this->render('special/base.html.twig');
+       return $this->render('special/main.html.twig');
     }
 
     /**

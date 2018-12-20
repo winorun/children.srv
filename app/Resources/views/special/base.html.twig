@@ -17,10 +17,27 @@
     {% endblock %}
   </head>
   
-<body>
+<body id="wrapper">
 
-<main role="main" class="container-fluid">
+<main  role="main" class="container-fluid">
 <h1 class="logo">МКУК «Здвинская ЦБС»</h1>
+<div style="display:inline-block">
+Размер шрифта:
+      <div class="fond-size fs-small"  onclick="setFontSize('fs-small')"  title="Уменьшенный размер шрифта">A</div>
+      <div class="fond-size fs-normal" onclick="setFontSize('fs-normal')" title="Нормальный размер шрифта">A</div>
+      <div class="fond-size fs-big"    onclick="setFontSize('fs-big')"    title="Увеличенный размер шрифта">A</div>
+</div>
+<div style="display:inline-block">
+<p class="a-colors">
+Цветовая схема:
+      <a class="color1 colorButtons" onclick="setColorSite('color1')" title="Черным по белому">A</a>
+      <a class="color2 colorButtons" onclick="setColorSite('color2')" title="Белым по черному">A</a>
+      <a class="color3 colorButtons" onclick="setColorSite('color3')" title="Желтым по темно-фиолетовому">A</a>
+</p>
+</div>
+<div style="display:inline-block">
+<a href="/">Обычная версия</a>
+</div>
 {{include('special/navbar.html.twig')}}
   <div class="container">
     <div class="row">
@@ -60,7 +77,13 @@
 </aside>
 
 </div>
-
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/popper.min.js"></script>
+    <script type="text/javascript" src="/js/special.js"></script>
+{% endblock %}
 </body>
 </html>
 
