@@ -41,8 +41,15 @@
       <a class="h4 text-danger" style="font-weight: 300;" href="/special"><img src="/images/eye.svg" width="50px">Версия для слабовидящих</a>
     </section>
     <section class="my-4 border rounded p-3">
-      <h3 class="h4 text-danger" style="font-weight: 300;">Сайт находится в разработке</h3>
-      <p class="text-muted">Сайт находится в активной разработке. Приносим извинения за доставленные неудобства.</p>
+      <h3 class="h4 text-danger" style="font-weight: 300;">Каталоги</h3>
+      <p class="text-muted">Электронные каталоги</p>
+      <ul>
+          <li><a href="http://poisk.ngonb.ru/opacg/index009.html">Каталог нашей библиотеки</a>
+          <li><a href="https://ngonb.ru/resources/catalog_ngonb.php">Каталог НГОНБ</a>
+          <li><a href="http://poisk.ngonb.ru/opacg/">Сводный каталог библиотек НСО</a>
+          <li><a href="http://skbr2.nilc.ru/">Сводный каталог библиотек России</a>
+      </ul>
+ 
     </section>
     <section class="my-4 border rounded p-3" id='markdown'>
       {{ render(controller('AppBundle:Markdown:test',{ 'contentName': 'sitebar' })) }}
