@@ -59,7 +59,7 @@
     </section>
     <section class="my-4 border rounded p-3">
     <h3 class="h4 text-dark" style="font-weight: 300;">Найти на сайте</h3>
-    <p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>
+    <!-- <p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>-->
     <form action="{{ path('Search') }}" method="get" role="search">   
       <div class="input-group">
         <input type="text" name="query" class="form-control" placeholder="Что найти?" value="">        
@@ -79,6 +79,10 @@
     {% block  buner  %}
       {{ render(controller('AppBundle:Buner:recentBuner')) }}
     {% endblock %}
+    </section>
+    <section class="my-4 border rounded p-3">
+      <h3 class="h4 text-dark" style="font-weight: 300;">Анкета</h3>
+      <p class="text-muted"><a href="/article/38">Оценка качества</a></p>
     </section>
   </aside>
 
